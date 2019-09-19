@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>sidenko.d</Authors>
+    <Company>CWT</Company>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CWT.Infrastructure.Caching" Version="1.0.2" />
+    <PackageReference Include="CWT.Infrastructure.Common" Version="1.0.7" />
+    <PackageReference Include="CWT.Infrastructure.Domain.Abstractions" Version="1.0.0" />
+    <PackageReference Include="CWT.Infrastructure.Logging" Version="1.0.3" />
+    <PackageReference Include="MongoDB.Bson" Version="2.8.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
