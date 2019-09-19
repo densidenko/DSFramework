@@ -1,0 +1,19 @@
+version: '{build}'
+image: Visual Studio 2019
+branches:
+  only:
+  - master
+  - develop
+build_script:
+- ps: .\build.ps1
+test: off
+artifacts:
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
+deploy:
+- provider: NuGet
+  api_key:
+    secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
+  skip_symbols: true
+  on:
+    branch: /^(develop|master)$/
