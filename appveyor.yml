@@ -10,10 +10,19 @@ test: off
 artifacts:
 - path: .\artifacts\**\*.nupkg
   name: NuGet
+
 deploy:
 - provider: NuGet
+  server: https://www.myget.org/F/dsframeworkcore/api/v2/package
   api_key:
-    secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
+    secure: QqK2GQggQ/YGZf6MRpv9RvWDHWLvvuyDaAbHgu4MmGExkYYrH87wa+DYykkNtQ/+
   skip_symbols: true
   on:
-    branch: /^(develop|master)$/
+    branch: develop
+- provider: NuGet
+  name: production
+  api_key:
+    secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
+  on:
+    branch: master
+    appveyor_repo_tag: true
