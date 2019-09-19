@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <VersionPrefix>1.0.0</VersionPrefix>
-        <VersionSuffix>alpha</VersionSuffix>
+        <VersionSuffix>alpha-00001</VersionSuffix>
         
         <Authors>Denis Sidenko</Authors>
         <Copyright>Copyright © Denis Sidenko 2019</Copyright>

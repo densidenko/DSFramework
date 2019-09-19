@@ -2,10 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>sidenko.d</Authors>
-    <Company>CWT</Company>
-    <Version>1.0.3</Version>
     <RootNamespace>DS.Logging</RootNamespace>
   </PropertyGroup>
 
