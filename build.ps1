@@ -39,7 +39,7 @@ if (Test-Path env:APPVEYOR) {
 # Build
 echo "`n`n----- BUILD -----`n"
 
-exec { & dotnet build Firestorm.sln -c Release --version-suffix=$buildSuffix }
+exec { & dotnet build DSFrameworkCore.sln -c Release --version-suffix=$buildSuffix }
 
 # Test
 echo "`n`n----- TEST -----`n"
@@ -57,7 +57,7 @@ ForEach ($folder in $testDirs) {
     $i++
     $format = @{ $true = "/p:CoverletOutputFormat=opencover"; $false = ""}[$i -eq $testDirs.Length ]
 
-    exec { & dotnet test $folder.FullName -c Release --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutput=$root\coverage /p:MergeWith=$root\coverage.json /p:Include="[*]Firestorm.*" /p:Exclude="[*]Firestorm.Testing.*" $format }
+    exec { & dotnet test $folder.FullName -c Release --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutput=$root\coverage /p:MergeWith=$root\coverage.json /p:Include="[*]DSFrameworkCore.*" /p:Exclude="[*]DSFrameworkCore.Testing.*" $format }
 }
 
 choco install codecov --no-progress
