@@ -42,26 +42,26 @@ echo "`n`n----- BUILD -----`n"
 exec { & dotnet build DSFrameworkCore.sln -c Release --version-suffix=$buildSuffix }
 
 # Test
-echo "`n`n----- TEST -----`n"
+#echo "`n`n----- TEST -----`n"
+#
+#exec { & dotnet tool install --global coverlet.console }
+#
+#$testDirs  = @(Get-ChildItem -Path tests -Include "*.Tests" -Directory -Recurse)
+#$testDirs += @(Get-ChildItem -Path tests -Include "*.IntegrationTests" -Directory -Recurse)
+#$testDirs += @(Get-ChildItem -Path tests -Include "*FunctionalTests" -Directory -Recurse)
 
-exec { & dotnet tool install --global coverlet.console }
-
-$testDirs  = @(Get-ChildItem -Path tests -Include "*.Tests" -Directory -Recurse)
-$testDirs += @(Get-ChildItem -Path tests -Include "*.IntegrationTests" -Directory -Recurse)
-$testDirs += @(Get-ChildItem -Path tests -Include "*FunctionalTests" -Directory -Recurse)
-
-$i = 0
-ForEach ($folder in $testDirs) { 
-    echo "Testing $folder"
-
-    $i++
-    $format = @{ $true = "/p:CoverletOutputFormat=opencover"; $false = ""}[$i -eq $testDirs.Length ]
-
-    exec { & dotnet test $folder.FullName -c Release --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutput=$root\coverage /p:MergeWith=$root\coverage.json /p:Include="[*]DSFrameworkCore.*" /p:Exclude="[*]DSFrameworkCore.Testing.*" $format }
-}
-
-choco install codecov --no-progress
-exec { & codecov -f "$root\coverage.opencover.xml" }
+#$i = 0
+#ForEach ($folder in $testDirs) { 
+#    echo "Testing $folder"
+#
+#    $i++
+#    $format = @{ $true = "/p:CoverletOutputFormat=opencover"; $false = ""}[$i -eq $testDirs.Length ]
+#
+#    exec { & dotnet test $folder.FullName -c Release --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutput=$root\coverage /p:MergeWith=$root\coverage.json /p:Include="[*]DSFrameworkCore.*" /p:Exclude="[*]DSFrameworkCore.Testing.*" $format }
+#}
+#
+#choco install codecov --no-progress
+#exec { & codecov -f "$root\coverage.opencover.xml" }
 
 # Pack
 echo "`n`n----- PACK -----`n"
