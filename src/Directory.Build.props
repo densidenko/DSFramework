@@ -1,12 +1,10 @@
 <Project>
-    <PropertyGroup>
-        <VersionPrefix>0.0.3</VersionPrefix>
-        <VersionSuffix></VersionSuffix>
-        
+    <PropertyGroup>       
         <Authors>Denis Sidenko</Authors>
         <Copyright>Copyright © Denis Sidenko 2019</Copyright>
         <PackageProjectUrl>https://github.com/densidenko/DSFrameworkCore</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/densidenko/DSFrameworkCore/blob/master/LICENSE</PackageLicenseUrl>
-                
+        <PackageLicenseUrl>https://github.com/densidenko/DSFrameworkCore/blob/master/LICENSE</PackageLicenseUrl>     
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageTags>Infrastructure;DSFrameworkCore</PackageTags>		
     </PropertyGroup>
 </Project>
