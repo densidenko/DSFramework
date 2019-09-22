@@ -17,7 +17,7 @@ if(Test-Path $artifactsPath) { Remove-Item $artifactsPath -Force -Recurse }
 $output = gitversion /nofetch | Out-String
 $versions = $output | ConvertFrom-Json
 $packageVer = $versions.NuGetVersion
-$buildVer = ($versions.SemVer + “.” + $env:APPVEYOR_BUILD_NUMBER)
+$buildVer = $versions.SemVer
 
 echo "Build: Package version $packageVer"
 echo "Build: Build version $buildVer"
@@ -27,7 +27,7 @@ echo "Build: Build version $buildVer"
 # Update Appveyor version
 if (Test-Path env:APPVEYOR) {      
 #	echo "Build: Full version is $full"
-    Update-AppveyorBuild -Version $buildVer
+    Update-AppveyorBuild -Version "$($buildVer)/$($env:APPVEYOR_BUILD_NUMBER)"
 }
 
 # Build
