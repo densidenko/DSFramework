@@ -22,7 +22,7 @@ $buildVer = $versions.SemVer
 echo "Build: Package version $packageVer"
 echo "Build: Build version $buildVer"
 
-exec { & gitversion /output buildserver /updateAssemblyInfo}
+gitversion /output buildserver /updateAssemblyInfo
 
 # Update Appveyor version
 if (Test-Path env:APPVEYOR) {      
@@ -33,7 +33,7 @@ if (Test-Path env:APPVEYOR) {
 # Build
 echo "`n`n----- BUILD -----`n"
 
-exec { & dotnet build DSFrameworkCore.sln -c Release -p:Version=$buildVer }
+exec { & dotnet build DSFrameworkCore.sln -c Release /p:Version=$buildVer }
 
 # Test
 #echo "`n`n----- TEST -----`n"
