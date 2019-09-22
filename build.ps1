@@ -21,6 +21,7 @@ $commitHash = $(git rev-parse --short HEAD)
 $buildSuffix = @{ $true = "$($suffix)-$($commitHash)"; $false = "$($branch)-$($commitHash)" }[$suffix -ne ""]
 $versionSuffix = @{ $true = "--version-suffix=$($suffix)"; $false = ""}[$suffix -ne ""]
 
+choco install gitversion.portable -pre -y
 gitversion /l console /output buildserver /updateAssemblyInfo
 
 echo "Build: Package version suffix is $suffix"
@@ -45,9 +46,9 @@ exec { & dotnet build DSFrameworkCore.sln -c Release --version-suffix=$buildSuff
 
 # Test
 #echo "`n`n----- TEST -----`n"
-#
+
 #exec { & dotnet tool install --global coverlet.console }
-#
+
 #$testDirs  = @(Get-ChildItem -Path tests -Include "*.Tests" -Directory -Recurse)
 #$testDirs += @(Get-ChildItem -Path tests -Include "*.IntegrationTests" -Directory -Recurse)
 #$testDirs += @(Get-ChildItem -Path tests -Include "*FunctionalTests" -Directory -Recurse)
@@ -55,13 +56,13 @@ exec { & dotnet build DSFrameworkCore.sln -c Release --version-suffix=$buildSuff
 #$i = 0
 #ForEach ($folder in $testDirs) { 
 #    echo "Testing $folder"
-#
+
 #    $i++
 #    $format = @{ $true = "/p:CoverletOutputFormat=opencover"; $false = ""}[$i -eq $testDirs.Length ]
 #
 #    exec { & dotnet test $folder.FullName -c Release --no-build --no-restore /p:CollectCoverage=true /p:CoverletOutput=$root\coverage /p:MergeWith=$root\coverage.json /p:Include="[*]DSFrameworkCore.*" /p:Exclude="[*]DSFrameworkCore.Testing.*" $format }
 #}
-#
+
 #choco install codecov --no-progress
 #exec { & codecov -f "$root\coverage.opencover.xml" }
 
