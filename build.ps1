@@ -21,6 +21,8 @@ $commitHash = $(git rev-parse --short HEAD)
 $buildSuffix = @{ $true = "$($suffix)-$($commitHash)"; $false = "$($branch)-$($commitHash)" }[$suffix -ne ""]
 $versionSuffix = @{ $true = "--version-suffix=$($suffix)"; $false = ""}[$suffix -ne ""]
 
+gitversion /l console /output buildserver /updateAssemblyInfo
+
 echo "Build: Package version suffix is $suffix"
 echo "Build: Build version suffix is $buildSuffix"
 

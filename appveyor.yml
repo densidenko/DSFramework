@@ -18,7 +18,7 @@ deploy:
     secure: QqK2GQggQ/YGZf6MRpv9RvWDHWLvvuyDaAbHgu4MmGExkYYrH87wa+DYykkNtQ/+
   skip_symbols: true
   on:
-    branch: /^(develop|master)$/
+    branch: /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
 - provider: NuGet
   name: production
   api_key:
