@@ -22,7 +22,7 @@ $buildVer = $versions.SemVer
 echo "Build: Package version $packageVer"
 echo "Build: Build version $buildVer"
 
-#gitversion /output buildserver /updateAssemblyInfo
+gitversion /output buildserver /updateAssemblyInfo
 
 # Update Appveyor version
 if (Test-Path env:APPVEYOR) {      
