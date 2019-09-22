@@ -4,6 +4,8 @@ branches:
   only:
   - master
   - develop
+install:
+  - choco install gitversion.portable -pre -y
 build_script:
 - ps: .\build.ps1
 test: off

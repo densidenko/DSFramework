@@ -21,7 +21,6 @@ $commitHash = $(git rev-parse --short HEAD)
 $buildSuffix = @{ $true = "$($suffix)-$($commitHash)"; $false = "$($branch)-$($commitHash)" }[$suffix -ne ""]
 $versionSuffix = @{ $true = "--version-suffix=$($suffix)"; $false = ""}[$suffix -ne ""]
 
-choco install gitversion.portable -pre -y
 gitversion /l console /output buildserver /updateAssemblyInfo
 
 echo "Build: Package version suffix is $suffix"
