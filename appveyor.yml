@@ -2,7 +2,7 @@ version: '{build}'
 image: Visual Studio 2019
 branches:
   only:
-  - /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
+  - /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
 install:
   - choco install gitversion.portable -pre -y
 build_script:
