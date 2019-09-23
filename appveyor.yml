@@ -2,29 +2,28 @@ version: '{build}'
 image: Visual Studio 2019
 branches:
   only:
-  - master
-  - develop
+  - /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
 install:
   - choco install gitversion.portable -pre -y
 build_script:
-- ps: .\build.ps1
+  - ps: .\build.ps1
 test: off
 artifacts:
-- path: .\artifacts\**\*.nupkg
-  name: NuGet
+  - path: .\artifacts\**\*.nupkg
+    name: NuGet
 
 deploy:
-- provider: NuGet
-  server: https://www.myget.org/F/dsframeworkcore/api/v2/package
-  api_key:
-    secure: QqK2GQggQ/YGZf6MRpv9RvWDHWLvvuyDaAbHgu4MmGExkYYrH87wa+DYykkNtQ/+
-  skip_symbols: true
-  on:
-    branch: /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
-- provider: NuGet
-  name: production
-  api_key:
-    secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
-  on:
-    branch: master
-    appveyor_repo_tag: true
+  - provider: NuGet
+    server: https://www.myget.org/F/dsframeworkcore/api/v2/package
+    api_key:
+      secure: QqK2GQggQ/YGZf6MRpv9RvWDHWLvvuyDaAbHgu4MmGExkYYrH87wa+DYykkNtQ/+
+    skip_symbols: true
+    on:
+      branch: /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
+  - provider: NuGet
+    name: production
+    api_key:
+      secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
+    on:
+      branch: master
+      appveyor_repo_tag: true

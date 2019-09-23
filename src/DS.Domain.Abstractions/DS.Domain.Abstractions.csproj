@@ -3,9 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>DSFrameworkCore.Domain.Abstractions</AssemblyName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RootNamespace>DS.Domain.Abstractions</RootNamespace>
-   
   </PropertyGroup>
 
 </Project>
