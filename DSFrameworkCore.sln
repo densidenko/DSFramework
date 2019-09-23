@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Serilog.Sink.MongoDB", "src\DSFramework.Serilog.Sink.MongoDB\DSFramework.Serilog.Sink.MongoDB.csproj", "{F54BF315-2825-40FD-96E0-21767B6D15D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Authorization", "src\DSFramework.Authorization\DSFramework.Authorization.csproj", "{A3D9DD2F-308E-404D-838A-BB30DB6BA812}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.MultiTenancy", "src\DSFramework.MultiTenancy\DSFramework.MultiTenancy.csproj", "{979253DA-5365-4A00-A095-204979ADB8E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Dependency", "src\DSFramework.Dependecy\DSFramework.Dependency.csproj", "{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +51,18 @@ Global
 		{F54BF315-2825-40FD-96E0-21767B6D15D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F54BF315-2825-40FD-96E0-21767B6D15D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F54BF315-2825-40FD-96E0-21767B6D15D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D9DD2F-308E-404D-838A-BB30DB6BA812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D9DD2F-308E-404D-838A-BB30DB6BA812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D9DD2F-308E-404D-838A-BB30DB6BA812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D9DD2F-308E-404D-838A-BB30DB6BA812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979253DA-5365-4A00-A095-204979ADB8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979253DA-5365-4A00-A095-204979ADB8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979253DA-5365-4A00-A095-204979ADB8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979253DA-5365-4A00-A095-204979ADB8E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +74,9 @@ Global
 		{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{D35DB7BA-E12C-44DA-947C-A6FA9E32BDA4} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{F54BF315-2825-40FD-96E0-21767B6D15D5} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{A3D9DD2F-308E-404D-838A-BB30DB6BA812} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{979253DA-5365-4A00-A095-204979ADB8E2} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B08B674-74F0-419F-806F-828AA4897CD3}
