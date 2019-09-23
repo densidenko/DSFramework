@@ -1,4 +1,5 @@
 ﻿using System;
+using DS.Serilog.Sink.MongoDB.Sinks;
 using MongoDB.Driver;
 using Serilog;
 using Serilog.Configuration;
