@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS.Domain.Abstractions", "src\DS.Domain.Abstractions\DS.Domain.Abstractions.csproj", "{7DE28856-653B-49D3-8BEC-E6707E0AAC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFrameworkCore.Domain.Abstractions", "src\DS.Domain.Abstractions\DSFrameworkCore.Domain.Abstractions.csproj", "{7DE28856-653B-49D3-8BEC-E6707E0AAC8F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS.Logging", "src\DS.Logging\DS.Logging.csproj", "{B1C3792C-E477-4B08-A17D-CA29B68641C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFrameworkCore.Logging", "src\DS.Logging\DSFrameworkCore.Logging.csproj", "{B1C3792C-E477-4B08-A17D-CA29B68641C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{E33462D4-0904-47C7-87F0-478E667C5AD2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{40479736-DBBF-4F08-8AD7-A16E0BFC2484}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DS.Logging.Serilog", "src\DS.Logging.Serilog\DS.Logging.Serilog.csproj", "{C1DA5087-C7C7-4C74-BAF7-442E7EA85A32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFrameworkCore.Logging.Serilog", "src\DS.Logging.Serilog\DSFrameworkCore.Logging.Serilog.csproj", "{C1DA5087-C7C7-4C74-BAF7-442E7EA85A32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.Serilog.Sink.MongoDB", "src\DS.Serilog.Sink.MongoDB\DS.Serilog.Sink.MongoDB.csproj", "{D2BC0F44-FF25-4BAD-8788-437C6A0AAFCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFrameworkCore.Serilog.Sink.MongoDB", "src\DS.Serilog.Sink.MongoDB\DSFrameworkCore.Serilog.Sink.MongoDB.csproj", "{D2BC0F44-FF25-4BAD-8788-437C6A0AAFCE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{65C664EF-9824-4FDB-A593-8906EFD1FFDC}"
 EndProject
