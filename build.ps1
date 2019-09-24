@@ -23,7 +23,7 @@ echo "Build: Package version $packageVer"
 echo "Build: Build version $buildVer"
 
 # Update Appveyor version
-if (Test-Path env:APPVEYOR) { Update-AppveyorBuild -Version "$($buildVer)/$($env:APPVEYOR_BUILD_NUMBER)" }
+if (Test-Path env:APPVEYOR) { Update-AppveyorBuild -Version "$($buildVer).$($env:APPVEYOR_BUILD_NUMBER)" }
 
 # Build
 echo "`n`n----- BUILD -----`n"
