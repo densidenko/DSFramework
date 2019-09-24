@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.MultiTenancy", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Dependency", "src\DSFramework.Dependecy\DSFramework.Dependency.csproj", "{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.MongoDB", "src\DSFramework.MongoDB\DSFramework.MongoDB.csproj", "{1BB3E325-50FE-4F5B-9534-BB1F4F697171}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.MongoDB", "src\DSFramework.MongoDB\DSFramework.MongoDB.csproj", "{1BB3E325-50FE-4F5B-9534-BB1F4F697171}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Caching", "src\DSFramework.Caching\DSFramework.Caching.csproj", "{06448685-8DB7-4AE9-946A-956F1F80307C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Caching", "src\DSFramework.Caching\DSFramework.Caching.csproj", "{06448685-8DB7-4AE9-946A-956F1F80307C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
