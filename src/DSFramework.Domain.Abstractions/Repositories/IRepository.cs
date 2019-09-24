@@ -1,4 +1,4 @@
-﻿namespace DS.Domain.Abstractions.Repositories
+﻿namespace DSFramework.Domain.Abstractions.Repositories
 {
     public interface IRepository<TAggregate> : IRepository<string, TAggregate>
     {

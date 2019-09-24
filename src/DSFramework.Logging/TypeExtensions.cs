@@ -6,7 +6,7 @@ namespace DSFramework.Logging
 {
     internal static class TypeExtensions
     {
-        public static string ReadableName(this Type type)
+        internal static string ReadableName(this Type type)
         {
             if (type == null)
             {
@@ -28,7 +28,7 @@ namespace DSFramework.Logging
             }
         }
 
-        public static string GetGenericTypeName(this Type type)
+        internal static string GetGenericTypeName(this Type type)
         {
             var typeName = string.Empty;
 
