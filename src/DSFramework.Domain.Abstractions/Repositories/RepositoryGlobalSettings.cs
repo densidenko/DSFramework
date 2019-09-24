@@ -1,6 +1,6 @@
-﻿using DS.Domain.Abstractions.Repositories.Observers;
+﻿using DSFramework.Domain.Abstractions.Repositories.Observers;
 
-namespace DS.Domain.Abstractions.Repositories
+namespace DSFramework.Domain.Abstractions.Repositories
 {
     public static class RepositoryGlobalSettings
     {

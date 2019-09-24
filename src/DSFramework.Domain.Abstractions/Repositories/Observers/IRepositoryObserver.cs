@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DS.Domain.Abstractions.Repositories.Observers
+namespace DSFramework.Domain.Abstractions.Repositories.Observers
 {
     public interface IRepositoryObserver
     {
