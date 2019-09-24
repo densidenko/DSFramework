@@ -26,4 +26,4 @@ deploy:
       secure: W1UO5jT2Edf51ksveER7O1Sc3eskFyH9MEbELXZQlUVVxdEUTGKyQ8pyINwWK7Tw
     on:
       branch: master
-      appveyor_repo_tag: true
+      appveyor_repo_tag: false
