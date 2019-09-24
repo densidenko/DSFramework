@@ -2,7 +2,7 @@ version: '{build}'
 image: Visual Studio 2019
 branches:
   only:
-  - /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
+  - /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
 install:
   - choco install gitversion.portable -pre -y
 build_script:
@@ -19,7 +19,7 @@ deploy:
       secure: QqK2GQggQ/YGZf6MRpv9RvWDHWLvvuyDaAbHgu4MmGExkYYrH87wa+DYykkNtQ/+
     skip_symbols: true
     on:
-      branch: /^(develop|master|releases?[/-]|hotfix(es)?[/-])$/
+      branch: /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
   - provider: NuGet
     name: production
     api_key:
