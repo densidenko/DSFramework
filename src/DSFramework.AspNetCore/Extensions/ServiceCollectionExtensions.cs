@@ -1,6 +1,11 @@
 ﻿using System.Reflection;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http.Headers;
+using System.Security.Claims;
+using System.Security.Principal;
+using DSFramework.AspNetCore.Authorization;
+using DSFramework.AspNetCore.Runtime;
+using DSFramework.Runtime.Session;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,10 +40,15 @@ namespace DSFramework.AspNetCore.Extensions
             return builder;
         }
 
-        public static void UseDefaultMvc(this IApplicationBuilder app)
+        public static IServiceCollection AddCommonWeb(this IServiceCollection services)
         {
-            app.UseExceptionHandler();
-            app.UseMvc();
+            services.AddHttpContextAccessor();
+            services.AddScoped<IUserSession, UserSession>();
+            services.AddScoped<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>()?.HttpContext?.User ?? ClaimsPrincipal.Current);
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+            services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationRequirement>();
+
+            return services;
         }
     }
 }

@@ -65,23 +65,6 @@ namespace DSFramework.GuardToolkit
             return value;
         }
 
-        [DebuggerStepThrough]
-        public static void ArgumentNotNull(object arg, string argName)
-        {
-            if (arg == null)
-            {
-                throw new ArgumentNullException(argName);
-            }
-        }
-
-        [DebuggerStepThrough]
-        public static void ArgumentNotEmpty<T>(ICollection<T> arg, string argName)
-        {
-            if (arg != null && !arg.Any())
-            {
-                throw new ArgumentException("Collection cannot be null and must have at least one item.", argName);
-            }
-        }
 
         [DebuggerStepThrough]
         public static void ArgumentNotEmpty(Guid arg, string argName)
