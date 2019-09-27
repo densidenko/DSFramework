@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj" />
     <ProjectReference Include="..\DSFramework.Dependecy\DSFramework.Dependency.csproj" />
+    <ProjectReference Include="..\DSFramework.Domain.Abstractions\DSFramework.Domain.Abstractions.csproj" />
   </ItemGroup>
   
 </Project>

@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using DSFramework.AspNetCore.Authorization;
 using DSFramework.AspNetCore.Runtime;
+using DSFramework.Authorization;
 using DSFramework.Runtime.Session;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -44,6 +45,8 @@ namespace DSFramework.AspNetCore.Extensions
         {
             services.AddHttpContextAccessor();
             services.AddScoped<IUserSession, UserSession>();
+            services.AddTransient<PermissionDependencyContext>();
+            services.AddSingleton<IPermissionService, PermissionService>();
             services.AddScoped<IPrincipal>(provider => provider.GetService<IHttpContextAccessor>()?.HttpContext?.User ?? ClaimsPrincipal.Current);
             services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationRequirement>();

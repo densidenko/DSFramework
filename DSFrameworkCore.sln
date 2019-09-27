@@ -32,6 +32,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.AspNetCore.Prometheus", "src\DSFramework.AspNetCore.Prometheus\DSFramework.AspNetCore.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Contracts.Common", "src\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{06448685-8DB7-4AE9-946A-956F1F80307C} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{8AE3EDBE-6528-4D23-969A-30AE84D44FC6} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{189D9C50-C903-4538-B626-2AC06CBCEF15} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{1773C6B6-3269-4BE3-8877-97F4C61487E0} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B08B674-74F0-419F-806F-828AA4897CD3}
