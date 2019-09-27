@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DSFramework.Domain.Abstractions.Specifications;
 
-namespace DS.Domain.Abstractions.Repositories
+namespace DSFramework.Domain.Abstractions.Repositories
 {
     public interface IRepositoryBase<in TKey, TAggregate>
     {
