@@ -5,13 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.8.0" />
-    <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="2.1.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Logging\DSFramework.Logging.csproj" />
+    <ProjectReference Include="..\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj" />
   </ItemGroup>
 
 </Project>

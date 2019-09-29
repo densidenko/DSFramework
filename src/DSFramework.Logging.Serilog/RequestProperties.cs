@@ -1,6 +1,6 @@
-﻿namespace DSFramework.Serilog.Sink.MongoDB.Helpers
+﻿namespace DSFramework.Logging.Serilog
 {
-    public class IndexKeys
+    public class RequestProperties
     {
         public const string EVENT_ID = "EventId";
         public const string MESSAGE_TEMPLATE = "MessageTemplate";
