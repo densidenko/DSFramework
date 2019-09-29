@@ -5,15 +5,21 @@ using Serilog.Context;
 
 namespace DSFramework.AspNetCore.Middleware
 {
-    public class RequestLoggingMiddleware : IMiddleware
+    public class RequestLoggingMiddleware
     {
-        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        private readonly RequestDelegate _next;
+        public RequestLoggingMiddleware(RequestDelegate next)
+        {
+            _next = next;
+        }
+
+        public async Task InvokeAsync(HttpContext context)
         {
             using (LogContext.PushProperty("RequestClientIpAddress", context.GetIp()))
             {
                 using (LogContext.PushProperty("RequestUser", context.GetUser()))
                 {
-                    await next(context);
+                    await _next(context);
                 }
             }
         }
