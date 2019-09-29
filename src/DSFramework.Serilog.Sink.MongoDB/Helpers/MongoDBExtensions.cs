@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using DSFramework.Logging.Serilog;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -106,7 +107,7 @@ namespace DSFramework.Serilog.Sink.MongoDB.Helpers
 
         private static void EnsureExpireIndexOnTimeStamp(IMongoCollection<BsonDocument> collection, TimeSpan expireAfter)
         {
-            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Ascending(IndexKeys.TIMESTAMP_UTC),
+            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Ascending(RequestProperties.TIMESTAMP_UTC),
                                                            new CreateIndexOptions { Background = true, ExpireAfter = expireAfter });
             collection.Indexes.CreateOneAsync(model);
         }
@@ -116,13 +117,13 @@ namespace DSFramework.Serilog.Sink.MongoDB.Helpers
             var model =
                 new
                     CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Combine(Builders<BsonDocument>
-                                                                                            .IndexKeys.Ascending(IndexKeys.DATE),
+                                                                                            .IndexKeys.Ascending(RequestProperties.DATE),
                                                                                             Builders<BsonDocument>
-                                                                                                .IndexKeys.Ascending(IndexKeys.APPLICATION),
+                                                                                                .IndexKeys.Ascending(RequestProperties.APPLICATION),
                                                                                             Builders<BsonDocument>
-                                                                                                .IndexKeys.Ascending(IndexKeys.LEVEL),
+                                                                                                .IndexKeys.Ascending(RequestProperties.LEVEL),
                                                                                             Builders<BsonDocument>
-                                                                                                .IndexKeys.Ascending(IndexKeys.MESSAGE_TEMPLATE)),
+                                                                                                .IndexKeys.Ascending(RequestProperties.MESSAGE_TEMPLATE)),
                                                    new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }
@@ -132,18 +133,18 @@ namespace DSFramework.Serilog.Sink.MongoDB.Helpers
             var model =
                 new
                     CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Combine(Builders<BsonDocument>
-                                                                                            .IndexKeys.Ascending(IndexKeys.DATE),
+                                                                                            .IndexKeys.Ascending(RequestProperties.DATE),
                                                                                             Builders<BsonDocument>
-                                                                                                .IndexKeys.Ascending($"{IndexKeys.EVENT_ID}.Id"),
+                                                                                                .IndexKeys.Ascending($"{RequestProperties.EVENT_ID}.Id"),
                                                                                             Builders<BsonDocument>
-                                                                                                .IndexKeys.Ascending(IndexKeys.USER)),
+                                                                                                .IndexKeys.Ascending(RequestProperties.USER)),
                                                    new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }
 
         private static void EnsureHashedIndexOnIpAddress(IMongoCollection<BsonDocument> collection)
         {
-            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{IndexKeys.PROPERTIES}.{IndexKeys.IP_ADDRESS}"),
+            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{RequestProperties.PROPERTIES}.{RequestProperties.IP_ADDRESS}"),
                                                            new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }
@@ -151,14 +152,14 @@ namespace DSFramework.Serilog.Sink.MongoDB.Helpers
         private static void EnsureHashedIndexOnCorrelationId(IMongoCollection<BsonDocument> collection)
         {
             var model =
-                new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{IndexKeys.PROPERTIES}.{IndexKeys.CORRELATION_ID}"),
+                new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{RequestProperties.PROPERTIES}.{RequestProperties.CORRELATION_ID}"),
                                                    new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }
 
         private static void EnsureHashedIndexOnRequestId(IMongoCollection<BsonDocument> collection)
         {
-            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{IndexKeys.PROPERTIES}.{IndexKeys.REQUEST_ID}"),
+            var model = new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{RequestProperties.PROPERTIES}.{RequestProperties.REQUEST_ID}"),
                                                            new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }
@@ -166,7 +167,7 @@ namespace DSFramework.Serilog.Sink.MongoDB.Helpers
         private static void EnsureHashedIndexOnConnectionId(IMongoCollection<BsonDocument> collection)
         {
             var model =
-                new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{IndexKeys.PROPERTIES}.{IndexKeys.CONNECTION_ID}"),
+                new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Hashed($"{RequestProperties.PROPERTIES}.{RequestProperties.CONNECTION_ID}"),
                                                    new CreateIndexOptions { Background = true });
             collection.Indexes.CreateOneAsync(model);
         }

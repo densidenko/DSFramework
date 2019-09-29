@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DSFramework.AspNetCore.Http;
+using DSFramework.Logging.Serilog;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 
@@ -15,9 +16,9 @@ namespace DSFramework.AspNetCore.Middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
-            using (LogContext.PushProperty("RequestClientIpAddress", context.GetIp()))
+            using (LogContext.PushProperty(RequestProperties.IP_ADDRESS, context.GetIp()))
             {
-                using (LogContext.PushProperty("RequestUser", context.GetUser()))
+                using (LogContext.PushProperty(RequestProperties.USER, context.GetUser()))
                 {
                     await _next(context);
                 }
