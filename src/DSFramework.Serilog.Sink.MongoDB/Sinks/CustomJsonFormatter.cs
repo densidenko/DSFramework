@@ -1,4 +1,5 @@
-﻿using DSFramework.Serilog.Sink.MongoDB.Helpers;
+﻿using DSFramework.Extensions;
+using DSFramework.Logging.Serilog;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Json;
@@ -18,19 +19,19 @@ namespace DSFramework.Serilog.Sink.MongoDB.Sinks
         public void Format(LogEvent logEvent, TextWriter output)
         {
             output.Write("{");
-            output.Write($"\"{IndexKeys.TIMESTAMP_UTC}\":\"{logEvent.Timestamp.ToUniversalTime().DateTime:u}\"");
-            output.Write($",\"{IndexKeys.DATE}\":\"{logEvent.Timestamp.ToUniversalTime().DateTime:yyyy-MM-dd}\"");
-            output.Write($",\"{IndexKeys.LEVEL}\":\"{logEvent.Level.ToString()}\"");
+            output.Write($"\"{RequestProperties.TIMESTAMP_UTC}\":\"{logEvent.Timestamp.ToUniversalTime().DateTime:u}\"");
+            output.Write($",\"{RequestProperties.DATE}\":\"{logEvent.Timestamp.ToUniversalTime().DateTime:yyyy-MM-dd}\"");
+            output.Write($",\"{RequestProperties.LEVEL}\":\"{logEvent.Level.ToString()}\"");
 
-            if (logEvent.Properties.TryGetValue(IndexKeys.EVENT_ID, out var eventId))
+            if (logEvent.Properties.TryGetValue(RequestProperties.EVENT_ID, out var eventId))
             {
                 output.Write(",");
-                JsonValueFormatter.WriteQuotedJsonString(IndexKeys.EVENT_ID, output);
+                JsonValueFormatter.WriteQuotedJsonString(RequestProperties.EVENT_ID, output);
                 output.Write(":");
                 _formatter.Format(eventId, output);
             }
 
-            output.Write($",\"{IndexKeys.MESSAGE_TEMPLATE}\":\"{logEvent.MessageTemplate}\"");
+            output.Write($",\"{RequestProperties.MESSAGE_TEMPLATE}\":\"{logEvent.MessageTemplate}\"");
 
             output.Write(",\"RenderedMessage\":");
             var message = logEvent.MessageTemplate.Render(logEvent.Properties);
@@ -44,7 +45,7 @@ namespace DSFramework.Serilog.Sink.MongoDB.Sinks
                 JsonValueFormatter.WriteQuotedJsonString(logEvent.Exception.ToString(), output);
             }
 
-            output.Write($"\"{IndexKeys.PROPERTIES}\":{{");
+            output.Write($"\"{RequestProperties.PROPERTIES}\":{{");
 
             foreach (var property in logEvent.Properties)
             {
