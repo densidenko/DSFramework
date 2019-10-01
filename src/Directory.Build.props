@@ -3,8 +3,8 @@
         <Authors>Denis Sidenko</Authors>
         <Copyright>Copyright © Denis Sidenko 2019</Copyright>
         <PackageProjectUrl>https://github.com/densidenko/DSFrameworkCore</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/densidenko/DSFrameworkCore/blob/master/LICENSE</PackageLicenseUrl>     
+        <PackageLicenseUrl>https://licenses.nuget.org/Apache-2.0</PackageLicenseUrl>     
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageTags>Infrastructure;DSFrameworkCore</PackageTags>		
+		<PackageTags>Infrastructure;DSFramework;Asp.Net.Core;MingoDb</PackageTags>		
     </PropertyGroup>
 </Project>
