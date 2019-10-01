@@ -24,6 +24,6 @@ deploy:
     name: production
     api_key:
       secure: Ma814zQZV6+GMnr23p8oKaIM7tpEWxv+aZwFk1pSarN2GoBP2oiGKoJlY+nwnL7/
+    skip_symbols: true
     on:
-      branch: /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
-      appveyor_repo_tag: false
+      branch: /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/      
