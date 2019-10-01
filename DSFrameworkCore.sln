@@ -30,9 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Caching", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore", "src\DSFramework.AspNetCore\DSFramework.AspNetCore.csproj", "{8AE3EDBE-6528-4D23-969A-30AE84D44FC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.AspNetCore.Prometheus", "src\DSFramework.AspNetCore.Prometheus\DSFramework.AspNetCore.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore.Prometheus", "src\DSFramework.AspNetCore.Prometheus\DSFramework.AspNetCore.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Contracts.Common", "src\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Contracts.Common", "src\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
