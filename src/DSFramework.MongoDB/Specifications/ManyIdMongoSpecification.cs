@@ -1,4 +1,4 @@
-﻿using DSFramework.Domain.Abstractions.Aggregates;
+﻿using DSFramework.Domain.Abstractions.Entities;
 using MongoDB.Driver;
 
 namespace DSFramework.MongoDB.Specifications

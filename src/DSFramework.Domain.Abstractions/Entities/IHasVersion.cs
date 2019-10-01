@@ -1,4 +1,4 @@
-﻿namespace DSFramework.Domain.Abstractions.Aggregates
+﻿namespace DSFramework.Domain.Abstractions.Entities
 {
     public interface IHasVersion
     {

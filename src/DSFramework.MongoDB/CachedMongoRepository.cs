@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using DSFramework.Caching;
+﻿using DSFramework.Caching;
 using DSFramework.Domain.Abstractions;
-using DSFramework.Domain.Abstractions.Aggregates;
+using DSFramework.Domain.Abstractions.Entities;
 using DSFramework.Domain.Abstractions.Repositories;
 using DSFramework.Domain.Abstractions.Repositories.Observers;
 using DSFramework.Domain.Abstractions.Specifications;
@@ -21,6 +15,12 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace DSFramework.MongoDB
 {
@@ -693,9 +693,9 @@ namespace DSFramework.MongoDB
             if (_settings.DisableOptimisticLock)
             {
                 var upserts = documents.Select(d => new ReplaceOneModel<TDocument>(FindByKey(d.Id), d)
-                                       {
-                                           IsUpsert = true
-                                       })
+                {
+                    IsUpsert = true
+                })
                                        .Cast<WriteModel<TDocument>>();
 
                 try
@@ -756,9 +756,9 @@ namespace DSFramework.MongoDB
             if (_settings.DisableOptimisticLock)
             {
                 var upserts = documents.Select(d => new ReplaceOneModel<TDocument>(FindByKey(d.Id), d)
-                                       {
-                                           IsUpsert = true
-                                       })
+                {
+                    IsUpsert = true
+                })
                                        .Cast<WriteModel<TDocument>>();
 
                 try

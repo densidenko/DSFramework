@@ -1,6 +1,6 @@
 ﻿using DSFramework.Domain.Abstractions;
-using DSFramework.Domain.Abstractions.Aggregates;
 using DSFramework.Domain.Abstractions.Converters;
+using DSFramework.Domain.Abstractions.Entities;
 using DSFramework.Domain.Abstractions.Repositories;
 using DSFramework.Domain.Abstractions.Repositories.Observers;
 using DSFramework.Domain.Abstractions.Specifications;
