@@ -55,4 +55,4 @@ ForEach ($folder in $testDirs) {
 # Pack
 echo "`n`n----- PACK -----`n"
 
-exec { & dotnet pack -c Release -o $artifactsPath --include-symbols --no-build /p:VersionPrefix=$packageVer }
+exec { & dotnet pack -c Release -o $artifactsPath --include-symbols -p:SymbolPackageFormat=snupkg --no-build /p:VersionPrefix=$packageVer }
