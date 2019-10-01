@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using DSFramework.Domain.Abstractions.Aggregates;
+﻿using DSFramework.Domain.Abstractions.Entities;
 using DSFramework.Domain.Abstractions.Specifications;
+using System;
+using System.Linq;
 
 namespace DSFramework.MongoDB.Specifications.Converter
 {

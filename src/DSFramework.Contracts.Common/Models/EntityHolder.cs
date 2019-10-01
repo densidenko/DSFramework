@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DSFramework.Domain.Abstractions.Entities;
+using System;
 using System.Collections.Generic;
-using DSFramework.Domain.Abstractions.Aggregates;
 
 namespace DSFramework.Contracts.Common.Models
 {
