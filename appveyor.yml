@@ -5,9 +5,6 @@ branches:
   - /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
 install:
   - choco install gitversion.portable -pre -y  
-before_build:
-  - ps: gitversion /l console /output buildserver /updateAssemblyInfo
-  - ps: Update-AppveyorBuild -Version "$env:GitVersion_NuGetVersion"  
 build_script:
   - ps: .\build.ps1
 test: off
