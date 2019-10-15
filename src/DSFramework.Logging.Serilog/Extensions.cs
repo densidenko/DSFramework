@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace DSFramework.Logging.Serilog
+namespace DSFramework.Extensions.Logging.Serilog
 {
     public static class Extensions
     {

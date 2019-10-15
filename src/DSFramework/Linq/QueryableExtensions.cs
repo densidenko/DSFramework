@@ -9,7 +9,7 @@ namespace DSFramework.Linq
     {
         public static IQueryable<T> WhereIf<T>(this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate)
         {
-            Check.ArgumentNotNull(query, nameof(query));
+            Check.NotNull(query, nameof(query));
 
             return condition ? query.Where(predicate) : query;
         }
@@ -52,7 +52,7 @@ namespace DSFramework.Linq
 
         public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> query, int page, int pageSize)
         {
-            Check.ArgumentNotNull(query, nameof(query));
+            Check.NotNull(query, nameof(query));
 
             var skip = (page - 1) * pageSize;
             var take = pageSize;

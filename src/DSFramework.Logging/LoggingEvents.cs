@@ -1,4 +1,4 @@
-﻿namespace DSFramework.Logging
+﻿namespace DSFramework.Extensions.Logging
 {
     public static class LoggingEvents
     {

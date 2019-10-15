@@ -1,9 +1,9 @@
 ﻿using DSFramework.Extensions;
-using DSFramework.Logging.Serilog;
 using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Json;
 using System.IO;
+using DSFramework.Extensions.Logging.Serilog;
 
 namespace DSFramework.Serilog.Sink.MongoDB.Sinks
 {

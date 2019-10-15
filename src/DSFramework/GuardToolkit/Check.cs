@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 
 namespace DSFramework.GuardToolkit
 {
@@ -23,8 +22,21 @@ namespace DSFramework.GuardToolkit
 
         [ContractAnnotation("value:null => halt")]
         public static T NotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName)
+            where T : class
         {
             if (value == null)
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+
+            return value;
+        }
+
+        [ContractAnnotation("value:null => halt")]
+        public static T? NotNull<T>(T? value, [InvokerParameterName] [NotNull] string parameterName)
+            where T : struct
+        {
+            if (!value.HasValue)
             {
                 throw new ArgumentNullException(parameterName);
             }
@@ -64,9 +76,7 @@ namespace DSFramework.GuardToolkit
 
             return value;
         }
-
-
-        [DebuggerStepThrough]
+        
         public static void ArgumentNotEmpty(Guid arg, string argName)
         {
             if (arg == Guid.Empty)
@@ -75,7 +85,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentInRange<T>(T arg, T min, T max, string argName)
             where T : struct, IComparable<T>
         {
@@ -86,7 +95,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentNotOutOfLength(string arg, int maxLength, string argName)
         {
             if (arg.Trim().Length > maxLength)
@@ -95,7 +103,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentNotNegative<T>(T arg, string argName, string message = NOT_NEGATIVE_MESSAGE)
             where T : struct, IComparable<T>
         {
@@ -105,7 +112,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentNotZero<T>(T arg, string argName)
             where T : struct, IComparable<T>
         {
@@ -119,13 +125,11 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void InheritsFrom<TBase>(Type type)
         {
             InheritsFrom<TBase>(type, INHERITS_FROM_MESSAGE.FormatInvariant(type.FullName, typeof(TBase).FullName));
         }
 
-        [DebuggerStepThrough]
         public static void InheritsFrom<TBase>(Type type, string message)
         {
             if (type.BaseType != typeof(TBase))
@@ -133,8 +137,7 @@ namespace DSFramework.GuardToolkit
                 throw new InvalidOperationException(message);
             }
         }
-
-        [DebuggerStepThrough]
+        
         public static void Implements<TInterface>(Type type, string message = IMPLEMENTS_MESSAGE)
         {
             if (!typeof(TInterface).IsAssignableFrom(type))
@@ -143,13 +146,11 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void IsTypeOf<TType>(object instance)
         {
             IsTypeOf<TType>(instance, IS_TYPE_OF_MESSAGE.FormatInvariant(instance.GetType().Name, typeof(TType).FullName));
         }
 
-        [DebuggerStepThrough]
         public static void IsTypeOf<TType>(object instance, string message)
         {
             if (!(instance is TType))
@@ -158,7 +159,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void IsEqual<TException>(object compare, object instance, string message = IS_EQUAL_MESSAGE)
             where TException : Exception
         {
@@ -168,7 +168,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentIsPositive<T>(T arg, string argName, string message = IS_POSITIVE_MESSAGE)
             where T : struct, IComparable<T>
         {
@@ -178,7 +177,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentIsTrue(bool arg, string argName, string message = IS_TRUE_MESSAGE)
         {
             if (!arg)
@@ -187,10 +185,9 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentIsEnumType(Type type, string argName)
         {
-            ArgumentNotNull(type, argName);
+            NotNull(type, argName);
             if (!type.IsEnum)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, "Type '{0}' must be a valid Enum type.", type.FullName),
@@ -198,11 +195,10 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void ArgumentIsEnumType<TEnum>(object arg, string argName)
             where TEnum : struct
         {
-            ArgumentNotNull(arg, argName);
+            NotNull(arg, argName);
             if (!Enum.IsDefined(typeof(TEnum), arg))
             {
                 throw new ArgumentOutOfRangeException(argName,
@@ -213,7 +209,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
         public static void PagingArgsValid(int indexArg, long sizeArg, string indexArgName, string sizeArgName)
         {
             ArgumentNotNegative(indexArg, indexArgName, "PageIndex cannot be below 0");
@@ -227,42 +222,6 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        [DebuggerStepThrough]
-        public static T ArgumentNotNull<T>(T value, string parameterName)
-            where T : class
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(parameterName);
-            }
-
-            return value;
-        }
-
-        [DebuggerStepThrough]
-        public static T? ArgumentNotNull<T>(T? value, string parameterName)
-            where T : struct
-        {
-            if (!value.HasValue)
-            {
-                throw new ArgumentNullException(parameterName);
-            }
-
-            return value;
-        }
-
-        [DebuggerStepThrough]
-        public static string ArgumentNotEmpty(string value, string parameterName)
-        {
-            if (string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value))
-            {
-                throw new ArgumentException(parameterName);
-            }
-
-            return value;
-        }
-
-        [DebuggerStepThrough]
         public static bool HasConsecutiveChars(string inputText, int sequenceLength = 3)
         {
             var charEnumerator = StringInfo.GetTextElementEnumerator(inputText);

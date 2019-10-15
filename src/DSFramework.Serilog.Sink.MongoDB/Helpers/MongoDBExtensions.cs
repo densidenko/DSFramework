@@ -1,5 +1,4 @@
-﻿using DSFramework.Logging.Serilog;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -7,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using DSFramework.Extensions.Logging.Serilog;
 
 namespace DSFramework.Serilog.Sink.MongoDB.Helpers
 {

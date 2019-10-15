@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
-namespace DSFramework.Logging.Timing
+namespace DSFramework.Extensions.Logging.Timing
 {
-    [SuppressMessage("ReSharper", "ExplicitCallerInfoArgument")]
     public static class Extensions
     {
         public static void LogTime(
