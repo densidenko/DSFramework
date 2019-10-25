@@ -8,6 +8,7 @@ using DSFramework.Domain.Abstractions;
 using DSFramework.Domain.Abstractions.Repositories;
 using DSFramework.Exceptions;
 using DSFramework.Extensions;
+using DSFramework.GuardToolkit;
 using DSFramework.Utils;
 using Microsoft.Extensions.Logging;
 using Polly;
@@ -52,7 +53,7 @@ namespace DSFramework.AspNetCore.Application.Service
         {
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
         }
 
@@ -71,7 +72,7 @@ namespace DSFramework.AspNetCore.Application.Service
             return await Observe(nameof(Delete), async () => await DeleteInternal(entityId));
         }
 
-        public async Task<BulkWriteResult<TKey>> BulkUpdateInternal(TWriteSnapshotCommand[] commands)
+        public virtual async Task<BulkWriteResult<TKey>> BulkUpdateInternal(TWriteSnapshotCommand[] commands)
         {
             var tasks = commands.RunInBulkhead(async command =>
                                                {
@@ -109,7 +110,7 @@ namespace DSFramework.AspNetCore.Application.Service
             EntityDeleted?.Invoke(entityHolder);
         }
 
-        private async Task<TEntityHolder> DeleteInternal(TKey entityId)
+        protected async Task<TEntityHolder> DeleteInternal(TKey entityId)
         {
             var entityType = typeof(TEntity).ReadableName();
             Logger.LogDebug("Delete {EntityType} {EntityId} command handled.", entityType, entityId);
@@ -135,7 +136,7 @@ namespace DSFramework.AspNetCore.Application.Service
                                });
         }
 
-        private async Task<TKey> UpdateInternal(TWriteSnapshotCommand command)
+        protected async Task<TKey> UpdateInternal(TWriteSnapshotCommand command)
         {
             var entityId = command.EntityId;
             var entityType = typeof(TEntity).ReadableName();
@@ -159,12 +160,9 @@ namespace DSFramework.AspNetCore.Application.Service
         /// </summary>
         /// <param name="command">The WriteSnapshotCommand</param>
         /// <returns></returns>
-        private async Task PrepareCommandForUpdate(TWriteSnapshotCommand command)
+        protected async Task PrepareCommandForUpdate(TWriteSnapshotCommand command)
         {
-            if (command == null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            Check.NotNull(command, nameof(command));
 
             var defaultTKey = default(TKey);
 
