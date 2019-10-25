@@ -1,10 +1,10 @@
-﻿namespace DSFramework.Domain.Abstractions.Aggregates
+﻿namespace DSFramework.Domain.Abstractions.Entities
 {
     public interface IHasId : IHasId<string>
     {
     }
 
-    public interface IHasId<T>
+    public interface IHasId<out T>
     {
         T Id { get; }
     }

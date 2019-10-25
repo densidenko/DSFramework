@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DSFramework.AspNetCore.Http;
-using DSFramework.Logging.Serilog;
+using DSFramework.Extensions.Logging.Serilog;
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 

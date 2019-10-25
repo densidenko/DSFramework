@@ -1,5 +1,5 @@
-﻿using System;
-using DSFramework.Domain.Abstractions.Aggregates;
+﻿using DSFramework.Domain.Abstractions.Entities;
+using System;
 
 namespace DSFramework.Contracts.Common.Models
 {

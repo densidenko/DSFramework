@@ -12,9 +12,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework", "src\DSFramew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Domain.Abstractions", "src\DSFramework.Domain.Abstractions\DSFramework.Domain.Abstractions.csproj", "{861F660A-CC2D-479B-81EE-68670EFF8DB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging", "src\DSFramework.Logging\DSFramework.Logging.csproj", "{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions.Logging", "src\DSFramework.Logging\DSFramework.Extensions.Logging.csproj", "{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog", "src\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj", "{D35DB7BA-E12C-44DA-947C-A6FA9E32BDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions.Logging.Serilog", "src\DSFramework.Logging.Serilog\DSFramework.Extensions.Logging.Serilog.csproj", "{D35DB7BA-E12C-44DA-947C-A6FA9E32BDA4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Serilog.Sink.MongoDB", "src\DSFramework.Serilog.Sink.MongoDB\DSFramework.Serilog.Sink.MongoDB.csproj", "{F54BF315-2825-40FD-96E0-21767B6D15D5}"
 EndProject
@@ -33,6 +33,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore.Prometheus", "src\DSFramework.AspNetCore.Prometheus\DSFramework.AspNetCore.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Contracts.Common", "src\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Threading", "src\DSFramework.Threading\DSFramework.Threading.csproj", "{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,10 @@ Global
 		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{8AE3EDBE-6528-4D23-969A-30AE84D44FC6} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{189D9C50-C903-4538-B626-2AC06CBCEF15} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{1773C6B6-3269-4BE3-8877-97F4C61487E0} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B08B674-74F0-419F-806F-828AA4897CD3}

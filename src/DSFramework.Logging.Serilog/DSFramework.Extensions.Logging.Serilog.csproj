@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Logging\DSFramework.Logging.csproj" />
+    <ProjectReference Include="..\DSFramework.Logging\DSFramework.Extensions.Logging.csproj" />
   </ItemGroup>
 
 </Project>

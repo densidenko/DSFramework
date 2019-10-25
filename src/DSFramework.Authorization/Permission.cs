@@ -59,7 +59,7 @@ namespace DSFramework.Authorization
             string description = null,
             MultiTenancySides multiTenancySides = MultiTenancySides.Host | MultiTenancySides.Tenant)
         {
-            Check.ArgumentNotNull(name, nameof(name));
+            Check.NotNull(name, nameof(name));
 
             Name = name;
             DisplayName = displayName;

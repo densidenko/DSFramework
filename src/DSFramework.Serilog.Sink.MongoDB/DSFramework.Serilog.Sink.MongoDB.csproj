@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\DSFramework.Logging.Serilog\DSFramework.Extensions.Logging.Serilog.csproj" />
   </ItemGroup>
 
 </Project>

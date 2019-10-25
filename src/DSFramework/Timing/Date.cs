@@ -1,4 +1,5 @@
 ﻿using System;
+using DSFramework.GuardToolkit;
 
 namespace DSFramework.Timing
 {
@@ -22,8 +23,7 @@ namespace DSFramework.Timing
 
         public Date(DateTime dateTime)
         {
-            if (dateTime == null)
-                throw new ArgumentNullException(nameof(dateTime));
+            Check.NotNull<DateTime>(dateTime, nameof(dateTime));
 
             Year = dateTime.Year;
             Month = dateTime.Month;

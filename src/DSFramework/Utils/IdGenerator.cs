@@ -26,7 +26,7 @@ namespace DSFramework.Utils
                 case "String": return (TKey)(object)Guid.NewGuid().ToString("N");
             }
 
-            throw new ArgumentException($"{idTypeName} is not a supported Id type, the Id of the document cannot be set.");
+            throw new ArgumentException($"{idTypeName} is not a supported Id type");
         }
     }
 }
