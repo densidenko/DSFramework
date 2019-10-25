@@ -4,7 +4,7 @@ branches:
   only:
   - /^(develop|master|[rR]eleases?[/-]|[hH]ot[fF]ix(es)?[/-])/
 install:
-  - choco install gitversion.portable -pre -y
+  - choco install gitversion.portable -pre -y  
 build_script:
   - ps: .\build.ps1
 test: off
