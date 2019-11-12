@@ -207,7 +207,8 @@ namespace DSFramework.AspNetCore.Application.Service
                 }
                 else
                 {
-                    Initial(command);
+                    command.SetCreatedTime(DateTime.UtcNow);
+                    command.DataVersion = Constants.INITIAL_DATA_VERSION;
                 }
             }
         }

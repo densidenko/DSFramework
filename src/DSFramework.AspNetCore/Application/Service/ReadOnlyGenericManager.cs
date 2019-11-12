@@ -26,27 +26,27 @@ namespace DSFramework.AspNetCore.Application.Service
             Observer = observer;
         }
 
-        public async Task<TEntity> Get(TKey id)
+        public virtual async Task<TEntity> Get(TKey id)
         {
             return await Observe(nameof(Get), async () => await Repository.GetAsync(id));
         }
 
-        public async Task<TEntity[]> GetMany(TKey[] ids)
+        public virtual async Task<TEntity[]> GetMany(TKey[] ids)
         {
             return await Observe(nameof(GetMany), async () => await Repository.GetManyAsync(ids));
         }
 
-        public async Task<TEntity[]> GetAll()
+        public virtual async Task<TEntity[]> GetAll()
         {
             return await Observe(nameof(GetAll), async () => await Repository.GetAllAsync());
         }
 
-        public async Task<TEntity[]> Search(IDomainSpecification<TEntity> specification)
+        public virtual async Task<TEntity[]> Search(IDomainSpecification<TEntity> specification)
         {
             return await Observe(nameof(Search), async () => await Repository.SearchAsync(specification));
         }
 
-        protected async Task<T> Observe<T>(string actionName, Func<Task<T>> action)
+        protected virtual async Task<T> Observe<T>(string actionName, Func<Task<T>> action)
         {
             return await Observer.Observe<TEntity, T>(actionName, action);
         }
