@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Dependecy\DSFramework.Extensions.DependencyInjection.csproj" />
     <ProjectReference Include="..\DSFramework.Extensions.DependencyInjection\DSFramework.Extensions.DependencyInjection.csproj" />
   </ItemGroup>
 
