@@ -6,7 +6,7 @@ namespace DSFramework.Data.Contracts.Models
     public interface IEntityHolder : IEntityHolder<string>
     { }
 
-    public interface IEntityHolder<TIdentity> : IHasVersion, IHasId<TIdentity>
+    public interface IEntityHolder<out TIdentity> : IHasVersion, IHasId<TIdentity>
     {
         DateTime CreatedDate { get; set; }
         DateTime? ModifiedDate { get; set; }

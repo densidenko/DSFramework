@@ -1,4 +1,4 @@
-﻿namespace DSFramework.Application.Services
+﻿namespace DSFramework.Application.Service
 {
     public interface ICanStart
     {
