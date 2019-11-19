@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using DSFramework.Collections;
 
 namespace DSFramework.Extensions
 {
@@ -15,10 +16,7 @@ namespace DSFramework.Extensions
         /// <summary>
         ///     Adds a char to beginning of given string if it does not starts with the char.
         /// </summary>
-        public static string EnsureStartsWith(this string str, char c)
-        {
-            return EnsureStartsWith(str, c, StringComparison.Ordinal);
-        }
+        public static string EnsureStartsWith(this string str, char c) => EnsureStartsWith(str, c, StringComparison.Ordinal);
 
         /// <summary>
         ///     Adds a char to beginning of given string if it does not starts with the char.
@@ -41,7 +39,10 @@ namespace DSFramework.Extensions
         /// <summary>
         ///     Adds a char to beginning of given string if it does not starts with the char.
         /// </summary>
-        public static string EnsureStartsWith(this string str, char c, bool ignoreCase, CultureInfo culture)
+        public static string EnsureStartsWith(this string str,
+                                              char c,
+                                              bool ignoreCase,
+                                              CultureInfo culture)
         {
             if (str == null)
             {
@@ -59,10 +60,7 @@ namespace DSFramework.Extensions
         /// <summary>
         ///     Adds a char to end of given string if it does not ends with the char.
         /// </summary>
-        public static string EnsureEndsWith(this string str, char c)
-        {
-            return EnsureEndsWith(str, c, StringComparison.Ordinal);
-        }
+        public static string EnsureEndsWith(this string str, char c) => EnsureEndsWith(str, c, StringComparison.Ordinal);
 
         /// <summary>
         ///     Adds a char to end of given string if it does not ends with the char.
@@ -85,7 +83,10 @@ namespace DSFramework.Extensions
         /// <summary>
         ///     Adds a char to end of given string if it does not ends with the char.
         /// </summary>
-        public static string EnsureEndsWith(this string str, char c, bool ignoreCase, CultureInfo culture)
+        public static string EnsureEndsWith(this string str,
+                                            char c,
+                                            bool ignoreCase,
+                                            CultureInfo culture)
         {
             if (str == null)
             {
@@ -100,26 +101,17 @@ namespace DSFramework.Extensions
             return str + c;
         }
 
-        public static bool IsEmpty(this string value)
-        {
-            return string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value);
-        }
+        public static bool IsEmpty(this string value) => string.IsNullOrEmpty(value) || string.IsNullOrWhiteSpace(value);
 
         /// <summary>
         ///     Indicates whether this string is null or an System.String.Empty string.
         /// </summary>
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
-        }
+        public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
         /// <summary>
         ///     indicates whether this string is null, empty, or consists only of white-space characters.
         /// </summary>
-        public static bool IsNullOrWhiteSpace(this string str)
-        {
-            return string.IsNullOrWhiteSpace(str);
-        }
+        public static bool IsNullOrWhiteSpace(this string str) => string.IsNullOrWhiteSpace(str);
 
         /// <summary>
         ///     Gets a substring of a string from beginning of the string.
@@ -145,9 +137,7 @@ namespace DSFramework.Extensions
         ///     Converts line endings in the string to <see cref="Environment.NewLine" />.
         /// </summary>
         public static string NormalizeLineEndings(this string str)
-        {
-            return str.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", Environment.NewLine);
-        }
+            => str.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", Environment.NewLine);
 
         /// <summary>
         ///     Gets index of nth occurence of a char in a string.
@@ -198,7 +188,7 @@ namespace DSFramework.Extensions
                 return string.Empty;
             }
 
-            if (Collections.CollectionExtensions.IsNullOrEmpty(postFixes))
+            if (CollectionExtensions.IsNullOrEmpty(postFixes))
             {
                 return str;
             }
@@ -233,7 +223,7 @@ namespace DSFramework.Extensions
                 return string.Empty;
             }
 
-            if (Collections.CollectionExtensions.IsNullOrEmpty(preFixes))
+            if (CollectionExtensions.IsNullOrEmpty(preFixes))
             {
                 return str;
             }
@@ -272,34 +262,22 @@ namespace DSFramework.Extensions
         /// <summary>
         ///     Uses string.Split method to split given string by given separator.
         /// </summary>
-        public static string[] Split(this string str, string separator)
-        {
-            return str.Split(new[] { separator }, StringSplitOptions.None);
-        }
+        public static string[] Split(this string str, string separator) => str.Split(new[] { separator }, StringSplitOptions.None);
 
         /// <summary>
         ///     Uses string.Split method to split given string by given separator.
         /// </summary>
-        public static string[] Split(this string str, string separator, StringSplitOptions options)
-        {
-            return str.Split(new[] { separator }, options);
-        }
+        public static string[] Split(this string str, string separator, StringSplitOptions options) => str.Split(new[] { separator }, options);
 
         /// <summary>
         ///     Uses string.Split method to split given string by <see cref="Environment.NewLine" />.
         /// </summary>
-        public static string[] SplitToLines(this string str)
-        {
-            return str.Split(Environment.NewLine);
-        }
+        public static string[] SplitToLines(this string str) => str.Split(Environment.NewLine);
 
         /// <summary>
         ///     Uses string.Split method to split given string by <see cref="Environment.NewLine" />.
         /// </summary>
-        public static string[] SplitToLines(this string str, StringSplitOptions options)
-        {
-            return str.Split(Environment.NewLine, options);
-        }
+        public static string[] SplitToLines(this string str, StringSplitOptions options) => str.Split(Environment.NewLine, options);
 
         /// <summary>
         ///     Converts PascalCase string to camelCase string.
@@ -383,8 +361,7 @@ namespace DSFramework.Extensions
         /// <typeparam name="T">Type of enum</typeparam>
         /// <param name="value">String value to convert</param>
         /// <returns>Returns enum object</returns>
-        public static T ToEnum<T>(this string value)
-            where T : struct
+        public static T ToEnum<T>(this string value) where T : struct
         {
             if (value == null)
             {
@@ -401,8 +378,7 @@ namespace DSFramework.Extensions
         /// <param name="value">String value to convert</param>
         /// <param name="ignoreCase">Ignore case</param>
         /// <returns>Returns enum object</returns>
-        public static T ToEnum<T>(this string value, bool ignoreCase)
-            where T : struct
+        public static T ToEnum<T>(this string value, bool ignoreCase) where T : struct
         {
             if (value == null)
             {
@@ -496,10 +472,7 @@ namespace DSFramework.Extensions
         ///     Returning string can not be longer than maxLength.
         /// </summary>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="str" /> is null</exception>
-        public static string TruncateWithPostfix(this string str, int maxLength)
-        {
-            return TruncateWithPostfix(str, maxLength, "...");
-        }
+        public static string TruncateWithPostfix(this string str, int maxLength) => TruncateWithPostfix(str, maxLength, "...");
 
         /// <summary>
         ///     Gets a substring of a string from beginning of the string if it exceeds maximum length.
@@ -540,9 +513,7 @@ namespace DSFramework.Extensions
         /// <returns></returns>
         [DebuggerStepThrough]
         public static string FormatInvariant(this string format, params object[] objects)
-        {
-            return string.Format(CultureInfo.InvariantCulture, format, objects);
-        }
+            => string.Format(CultureInfo.InvariantCulture, format, objects);
 
         /// <summary>
         ///     Formats a string to the current culture.
@@ -552,9 +523,7 @@ namespace DSFramework.Extensions
         /// <returns></returns>
         [DebuggerStepThrough]
         public static string FormatCurrent(this string format, params object[] objects)
-        {
-            return string.Format(CultureInfo.CurrentCulture, format, objects);
-        }
+            => string.Format(CultureInfo.CurrentCulture, format, objects);
 
         /// <summary>
         ///     Formats a string to the current UI culture.
@@ -564,20 +533,12 @@ namespace DSFramework.Extensions
         /// <returns></returns>
         [DebuggerStepThrough]
         public static string FormatCurrentUi(this string format, params object[] objects)
-        {
-            return string.Format(CultureInfo.CurrentUICulture, format, objects);
-        }
+            => string.Format(CultureInfo.CurrentUICulture, format, objects);
 
         [DebuggerStepThrough]
-        public static string FormatWith(this string format, params object[] args)
-        {
-            return FormatWith(format, CultureInfo.CurrentCulture, args);
-        }
+        public static string FormatWith(this string format, params object[] args) => FormatWith(format, CultureInfo.CurrentCulture, args);
 
         [DebuggerStepThrough]
-        public static string FormatWith(this string format, IFormatProvider provider, params object[] args)
-        {
-            return string.Format(provider, format, args);
-        }
+        public static string FormatWith(this string format, IFormatProvider provider, params object[] args) => string.Format(provider, format, args);
     }
 }

@@ -12,10 +12,7 @@ namespace DSFramework.Collections
         /// <summary>
         ///     Checks whatever given collection object is null or has no item.
         /// </summary>
-        public static bool IsNullOrEmpty<T>(this ICollection<T> source)
-        {
-            return source == null || source.Count <= 0;
-        }
+        public static bool IsNullOrEmpty<T>(this ICollection<T> source) => source == null || source.Count <= 0;
 
         /// <summary>
         ///     Adds an item to the collection if it's not already in the collection.
@@ -42,8 +39,7 @@ namespace DSFramework.Collections
 
         public static void AddRange<T>(this ICollection<T> initial, IEnumerable<T> other)
         {
-            if (other == null)
-                return;
+            if (other == null) return;
 
             if (initial is List<T> list)
             {
@@ -57,19 +53,19 @@ namespace DSFramework.Collections
             }
         }
 
+        #region IEquatable Support
+
         public static bool ListEquals<T>(this IEnumerable<T> first, IEnumerable<T> second)
         {
             var firstList = first?.ToList();
             var secondList = second?.ToList();
-            if (ReferenceEquals(firstList, secondList))
-                return true;
-            if ((firstList?.Count ?? 0) == 0 && (secondList?.Count ?? 0) == 0)
-                return true;
-            if (firstList == null || secondList == null)
-                return false;
-            if (firstList.Count != secondList.Count)
-                return false;
+            if (ReferenceEquals(firstList, secondList)) return true;
+            if ((firstList?.Count ?? 0) == 0 && (secondList?.Count ?? 0) == 0) return true;
+            if (firstList == null || secondList == null) return false;
+            if (firstList.Count != secondList.Count) return false;
             return firstList.All(secondList.Contains) && firstList.Count == secondList.Count;
         }
+
+        #endregion
     }
 }

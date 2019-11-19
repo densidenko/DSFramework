@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace DSFramework.Runtime.Session
@@ -16,14 +15,9 @@ namespace DSFramework.Runtime.Session
         public string UserBrowserName => string.Empty;
         public string UserIP => string.Empty;
         public long? ImpersonatorUserId => null;
-        public bool IsInRole(string role)
-        {
-            return false;
-        }
 
-        public bool IsGranted(string permission)
-        {
-            return false;
-        }
+        public bool IsInRole(string role) => false;
+
+        public bool IsGranted(string permission) => false;
     }
 }

@@ -4,37 +4,39 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{E33462D4-0904-47C7-87F0-478E667C5AD2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{40479736-DBBF-4F08-8AD7-A16E0BFC2484}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{65C664EF-9824-4FDB-A593-8906EFD1FFDC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework", "src\DSFramework\DSFramework.csproj", "{D5A1FDAC-09EE-4517-A565-211BA082A334}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Domain.Abstractions", "src\DSFramework.Domain.Abstractions\DSFramework.Domain.Abstractions.csproj", "{861F660A-CC2D-479B-81EE-68670EFF8DB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions.Logging", "src\DSFramework.Logging\DSFramework.Extensions.Logging.csproj", "{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging", "src\DSFramework.Logging\DSFramework.Logging.csproj", "{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions.Logging.Serilog", "src\DSFramework.Logging.Serilog\DSFramework.Extensions.Logging.Serilog.csproj", "{D35DB7BA-E12C-44DA-947C-A6FA9E32BDA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog", "src\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj", "{D35DB7BA-E12C-44DA-947C-A6FA9E32BDA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Serilog.Sink.MongoDB", "src\DSFramework.Serilog.Sink.MongoDB\DSFramework.Serilog.Sink.MongoDB.csproj", "{F54BF315-2825-40FD-96E0-21767B6D15D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog.Sink.MongoDB", "src\DSFramework.Logging.Serilog.Sink.MongoDB\DSFramework.Logging.Serilog.Sink.MongoDB.csproj", "{F54BF315-2825-40FD-96E0-21767B6D15D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Authorization", "src\DSFramework.Authorization\DSFramework.Authorization.csproj", "{A3D9DD2F-308E-404D-838A-BB30DB6BA812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Security.Authorization", "src\DSFramework.Security.Authorization\DSFramework.Security.Authorization.csproj", "{A3D9DD2F-308E-404D-838A-BB30DB6BA812}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.MultiTenancy", "src\DSFramework.MultiTenancy\DSFramework.MultiTenancy.csproj", "{979253DA-5365-4A00-A095-204979ADB8E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Hosting.MultiTenancy", "src\DSFramework.Hosting.MultiTenancy\DSFramework.Hosting.MultiTenancy.csproj", "{979253DA-5365-4A00-A095-204979ADB8E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Dependency", "src\DSFramework.Dependecy\DSFramework.Dependency.csproj", "{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions.DependencyInjection", "src\DSFramework.Extensions.DependencyInjection\DSFramework.Extensions.DependencyInjection.csproj", "{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.MongoDB", "src\DSFramework.MongoDB\DSFramework.MongoDB.csproj", "{1BB3E325-50FE-4F5B-9534-BB1F4F697171}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Data.Caching", "src\DSFramework.Data.Caching\DSFramework.Data.Caching.csproj", "{06448685-8DB7-4AE9-946A-956F1F80307C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Caching", "src\DSFramework.Caching\DSFramework.Caching.csproj", "{06448685-8DB7-4AE9-946A-956F1F80307C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Web.AspNetCore", "src\DSFramework.Web.AspNetCore\DSFramework.Web.AspNetCore.csproj", "{8AE3EDBE-6528-4D23-969A-30AE84D44FC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore", "src\DSFramework.AspNetCore\DSFramework.AspNetCore.csproj", "{8AE3EDBE-6528-4D23-969A-30AE84D44FC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Web.Metrics.Prometheus", "src\DSFramework.Web.Metrics.Prometheus\DSFramework.Web.Metrics.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.AspNetCore.Prometheus", "src\DSFramework.AspNetCore.Prometheus\DSFramework.AspNetCore.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Data.Contracts", "src\DSFramework.Data.Contracts\DSFramework.Data.Contracts.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Contracts.Common", "src\DSFramework.Contracts.Common\DSFramework.Contracts.Common.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Threading", "src\DSFramework.Threading\DSFramework.Threading.csproj", "{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Threading", "src\DSFramework.Threading\DSFramework.Threading.csproj", "{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Data.MongoDB", "src\DSFramework.Data.MongoDB\DSFramework.Data.MongoDB.csproj", "{7D99C44D-E796-4386-BA13-FC7F0610A78E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Extensions", "src\DSFramework.Extensions\DSFramework.Extensions.csproj", "{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Web", "src\DSFramework.Web\DSFramework.Web.csproj", "{6A2AD8A0-C370-4D49-91AF-3029CE471C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Security", "src\DSFramework.Security\DSFramework.Security.csproj", "{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,10 +76,6 @@ Global
 		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BB3E325-50FE-4F5B-9534-BB1F4F697171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BB3E325-50FE-4F5B-9534-BB1F4F697171}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BB3E325-50FE-4F5B-9534-BB1F4F697171}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BB3E325-50FE-4F5B-9534-BB1F4F697171}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06448685-8DB7-4AE9-946A-956F1F80307C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06448685-8DB7-4AE9-946A-956F1F80307C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06448685-8DB7-4AE9-946A-956F1F80307C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,16 +96,27 @@ Global
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2464572-F648-4EF6-9D2A-DA9F56E3F3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2464572-F648-4EF6-9D2A-DA9F56E3F3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2464572-F648-4EF6-9D2A-DA9F56E3F3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2464572-F648-4EF6-9D2A-DA9F56E3F3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D99C44D-E796-4386-BA13-FC7F0610A78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D99C44D-E796-4386-BA13-FC7F0610A78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D99C44D-E796-4386-BA13-FC7F0610A78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D99C44D-E796-4386-BA13-FC7F0610A78E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2AD8A0-C370-4D49-91AF-3029CE471C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2AD8A0-C370-4D49-91AF-3029CE471C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2AD8A0-C370-4D49-91AF-3029CE471C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2AD8A0-C370-4D49-91AF-3029CE471C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{65C664EF-9824-4FDB-A593-8906EFD1FFDC} = {40479736-DBBF-4F08-8AD7-A16E0BFC2484}
 		{D5A1FDAC-09EE-4517-A565-211BA082A334} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{861F660A-CC2D-479B-81EE-68670EFF8DB3} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{B6A6884E-77A4-44F0-88A1-DFEBEBE20B55} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
@@ -116,13 +125,15 @@ Global
 		{A3D9DD2F-308E-404D-838A-BB30DB6BA812} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{979253DA-5365-4A00-A095-204979ADB8E2} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{90D5A8BE-709F-4FB2-950B-F920E7AF9F02} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
-		{1BB3E325-50FE-4F5B-9534-BB1F4F697171} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{06448685-8DB7-4AE9-946A-956F1F80307C} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{8AE3EDBE-6528-4D23-969A-30AE84D44FC6} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{189D9C50-C903-4538-B626-2AC06CBCEF15} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{1773C6B6-3269-4BE3-8877-97F4C61487E0} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
-		{E2464572-F648-4EF6-9D2A-DA9F56E3F3C4} = {40479736-DBBF-4F08-8AD7-A16E0BFC2484}
+		{7D99C44D-E796-4386-BA13-FC7F0610A78E} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{6A2AD8A0-C370-4D49-91AF-3029CE471C08} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
+		{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B08B674-74F0-419F-806F-828AA4897CD3}

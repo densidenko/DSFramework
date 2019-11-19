@@ -8,9 +8,6 @@
         /// <summary>
         ///     Check if this Entity is null of marked as deleted.
         /// </summary>
-        public static bool IsNullOrDeleted(this ISoftDelete entity)
-        {
-            return entity == null || entity.IsDeleted;
-        }
+        public static bool IsNullOrDeleted(this ISoftDelete entity) => entity == null || entity.IsDeleted;
     }
 }

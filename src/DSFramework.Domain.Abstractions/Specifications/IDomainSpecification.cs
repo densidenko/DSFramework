@@ -5,11 +5,11 @@ namespace DSFramework.Domain.Abstractions.Specifications
 {
     public interface IDomainSpecification<TAggregateRoot> : ISpecification<TAggregateRoot>
     {
-        bool IsSatisfied(TAggregateRoot obj);
-        IEnumerable<TAggregateRoot> Filter(IEnumerable<TAggregateRoot> collection);
         IAndDomainSpecification<TAggregateRoot> And(IDomainSpecification<TAggregateRoot> specification);
-        IOrDomainSpecification<TAggregateRoot> Or(IDomainSpecification<TAggregateRoot> specification);
+        IEnumerable<TAggregateRoot> Filter(IEnumerable<TAggregateRoot> collection);
+        bool IsSatisfied(TAggregateRoot obj);
         INotDomainSpecification<TAggregateRoot> Not();
+        IOrDomainSpecification<TAggregateRoot> Or(IDomainSpecification<TAggregateRoot> specification);
     }
 
     public interface IAndDomainSpecification<TAggregateRoot> : IDomainSpecification<TAggregateRoot>

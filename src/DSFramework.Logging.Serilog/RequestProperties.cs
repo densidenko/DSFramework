@@ -1,4 +1,4 @@
-﻿namespace DSFramework.Extensions.Logging.Serilog
+﻿namespace DSFramework.Logging.Serilog
 {
     public class RequestProperties
     {

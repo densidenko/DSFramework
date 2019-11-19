@@ -8,7 +8,51 @@ namespace DSFramework.Threading
 {
     public class GenericLock<TKey> where TKey : IComparable<TKey>
     {
-        class LocksHolder : IDisposable
+        internal class SemaphoreHolder
+        {
+            private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
+            private long _awaiters;
+            public TKey Key { get; }
+
+            internal event EventHandler Released;
+
+            public SemaphoreHolder(TKey key)
+            {
+                Key = key;
+            }
+
+            protected virtual void OnReleased() => Released?.Invoke(this, EventArgs.Empty);
+
+            public void EnqueueAwaiter() => Interlocked.Increment(ref _awaiters);
+
+            public void DequeueAwaiter() => Interlocked.Decrement(ref _awaiters);
+
+            public long GetCurrentAwaiters() => Interlocked.Read(ref _awaiters);
+
+            public void Release()
+            {
+                _semaphore.Release();
+                OnReleased();
+            }
+
+            public async Task WaitAsync() => await _semaphore.WaitAsync();
+
+            public void Wait() => _semaphore.Wait();
+        }
+
+        private class LockHolder : IDisposable
+        {
+            private readonly SemaphoreHolder _holder;
+
+            public LockHolder(SemaphoreHolder holder)
+            {
+                _holder = holder;
+            }
+
+            public void Dispose() => _holder.Release();
+        }
+
+        private class LocksHolder : IDisposable
         {
             private readonly IEnumerable<IDisposable> _locks;
 
@@ -26,74 +70,8 @@ namespace DSFramework.Threading
             }
         }
 
-        class LockHolder : IDisposable
-        {
-            private readonly SemaphoreHolder _holder;
-
-            public LockHolder(SemaphoreHolder holder)
-            {
-                _holder = holder;
-            }
-
-
-            public void Dispose()
-            {
-                _holder.Release();
-            }
-        }
-
-        internal class SemaphoreHolder
-        {
-            public TKey Key { get; }
-            private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
-            private long _awaiters;
-
-            public SemaphoreHolder(TKey key)
-            {
-                Key = key;
-            }
-
-            internal event EventHandler Released;
-
-            public void EnqueueAwaiter()
-            {
-                Interlocked.Increment(ref _awaiters);
-            }
-
-            public void DequeueAwaiter()
-            {
-                Interlocked.Decrement(ref _awaiters);
-            }
-
-            public long GetCurrentAwaiters()
-            {
-                return Interlocked.Read(ref _awaiters);
-            }
-
-            public void Release()
-            {
-                _semaphore.Release();
-                OnReleased();
-            }
-
-            public async Task WaitAsync()
-            {
-                await _semaphore.WaitAsync();
-            }
-
-            public void Wait()
-            {
-                _semaphore.Wait();
-            }
-
-            protected virtual void OnReleased()
-            {
-                Released?.Invoke(this, EventArgs.Empty);
-            }
-        }
-
-        readonly Dictionary<TKey, SemaphoreHolder> _semaphores = new Dictionary<TKey, SemaphoreHolder>();
-        readonly object _lock = new object();
+        private readonly Dictionary<TKey, SemaphoreHolder> _semaphores = new Dictionary<TKey, SemaphoreHolder>();
+        private readonly object _lock = new object();
 
         public async Task<IDisposable> LockAsync(TKey key)
         {
@@ -114,23 +92,6 @@ namespace DSFramework.Threading
             await holder.WaitAsync();
 
             return new LockHolder(holder);
-        }
-
-        private void Holder_Released(object sender, EventArgs e)
-        {
-            if (sender is SemaphoreHolder holder)
-            {
-                lock (_lock)
-                {
-                    holder.DequeueAwaiter();
-
-                    if (holder.GetCurrentAwaiters() == 0)
-                    {
-                        holder.Released -= Holder_Released;
-                        _semaphores.Remove(holder.Key);
-                    }
-                }
-            }
         }
 
         public async Task<IDisposable> LockAsync(IEnumerable<TKey> keys)
@@ -156,14 +117,25 @@ namespace DSFramework.Threading
             return new LocksHolder(locks);
         }
 
-        public IDisposable Lock(TKey key)
-        {
-            return LockAsync(key).Result;
-        }
+        public IDisposable Lock(TKey key) => LockAsync(key).Result;
 
-        public IDisposable Lock(IEnumerable<TKey> keys)
+        public IDisposable Lock(IEnumerable<TKey> keys) => LockAsync(keys).Result;
+
+        private void Holder_Released(object sender, EventArgs e)
         {
-            return LockAsync(keys).Result;
+            if (sender is SemaphoreHolder holder)
+            {
+                lock (_lock)
+                {
+                    holder.DequeueAwaiter();
+
+                    if (holder.GetCurrentAwaiters() == 0)
+                    {
+                        holder.Released -= Holder_Released;
+                        _semaphores.Remove(holder.Key);
+                    }
+                }
+            }
         }
     }
 }

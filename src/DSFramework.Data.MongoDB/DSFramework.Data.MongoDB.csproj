@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.8.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSFramework.Data.Caching\DSFramework.Data.Caching.csproj" />
+    <ProjectReference Include="..\DSFramework.Domain.Abstractions\DSFramework.Domain.Abstractions.csproj" />
+    <ProjectReference Include="..\DSFramework.Extensions\DSFramework.Extensions.csproj" />
+    <ProjectReference Include="..\DSFramework.Logging\DSFramework.Logging.csproj" />
+    <ProjectReference Include="..\DSFramework.Threading\DSFramework.Threading.csproj" />
+    <ProjectReference Include="..\DSFramework\DSFramework.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -6,7 +6,6 @@ namespace DSFramework.Disposables
     {
         private readonly Action _action;
 
-
         public ActionDisposable(Action action)
         {
             _action = action;
@@ -14,5 +13,4 @@ namespace DSFramework.Disposables
 
         public void Dispose() => _action();
     }
-
 }

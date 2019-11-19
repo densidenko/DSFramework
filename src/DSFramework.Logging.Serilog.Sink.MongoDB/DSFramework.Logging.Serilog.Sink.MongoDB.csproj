@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSFramework.Extensions\DSFramework.Extensions.csproj" />
+    <ProjectReference Include="..\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj" />
+  </ItemGroup>
+
+</Project>

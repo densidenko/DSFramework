@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
-namespace DSFramework.Extensions.Logging.Timing
+namespace DSFramework.Logging.Timing
 {
     public class TimeGuard : IDisposable
     {
@@ -30,13 +30,9 @@ namespace DSFramework.Extensions.Logging.Timing
         }
 
         public static TimeGuard Create(ILogger logger, TimeSpan timeSpan, [CallerMemberName] string caller = null)
-        {
-            return new TimeGuard(logger, timeSpan, caller);
-        }
+            => new TimeGuard(logger, timeSpan, caller);
 
         public static TimeGuard Create(ILogger logger, [CallerMemberName] string caller = null)
-        {
-            return new TimeGuard(logger, TimeSpan.FromSeconds(5), caller);
-        }
+            => new TimeGuard(logger, TimeSpan.FromSeconds(5), caller);
     }
 }

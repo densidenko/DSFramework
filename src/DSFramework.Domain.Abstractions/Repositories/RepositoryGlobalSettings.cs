@@ -6,9 +6,6 @@ namespace DSFramework.Domain.Abstractions.Repositories
     {
         public static IRepositoryObserver Observer { get; private set; }
 
-        public static void RegisterObserver<T>() where T : IRepositoryObserver, new()
-        {
-            Observer = new T();
-        }
+        public static void RegisterObserver<T>() where T : IRepositoryObserver, new() => Observer = new T();
     }
 }
