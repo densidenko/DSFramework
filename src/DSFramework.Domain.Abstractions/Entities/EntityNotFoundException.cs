@@ -23,24 +23,21 @@ namespace DSFramework.Domain.Abstractions.Entities
         ///     Creates a new <see cref="EntityNotFoundException" /> object.
         /// </summary>
         public EntityNotFoundException()
-        {
-        }
+        { }
 
         /// <summary>
         ///     Creates a new <see cref="EntityNotFoundException" /> object.
         /// </summary>
         public EntityNotFoundException(SerializationInfo serializationInfo, StreamingContext context)
             : base(serializationInfo, context)
-        {
-        }
+        { }
 
         /// <summary>
         ///     Creates a new <see cref="EntityNotFoundException" /> object.
         /// </summary>
         public EntityNotFoundException(Type entityType, object id)
             : this(entityType, id, null)
-        {
-        }
+        { }
 
         /// <summary>
         ///     Creates a new <see cref="EntityNotFoundException" /> object.
@@ -58,8 +55,7 @@ namespace DSFramework.Domain.Abstractions.Entities
         /// <param name="message">Exception message</param>
         public EntityNotFoundException(string message)
             : base(message)
-        {
-        }
+        { }
 
         /// <summary>
         ///     Creates a new <see cref="EntityNotFoundException" /> object.
@@ -68,7 +64,6 @@ namespace DSFramework.Domain.Abstractions.Entities
         /// <param name="innerException">Inner exception</param>
         public EntityNotFoundException(string message, Exception innerException)
             : base(message, innerException)
-        {
-        }
+        { }
     }
 }

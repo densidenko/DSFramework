@@ -17,9 +17,9 @@ namespace DSFramework.Timing
         ///     String format: yyyy-MM-dd
         /// </summary>
         /// <param name="strDate"></param>
-        public Date(string strDate) : this(DateTime.ParseExact(strDate, FORMAT, null))
-        {
-        }
+        public Date(string strDate)
+            : this(DateTime.ParseExact(strDate, FORMAT, provider: null))
+        { }
 
         public Date(DateTime dateTime)
         {
@@ -31,30 +31,17 @@ namespace DSFramework.Timing
             DayOfYear = dateTime.DayOfYear;
         }
 
-        public override string ToString()
-        {
-            return new DateTime(Year, Month, Day).ToString(FORMAT);
-        }
+        public override string ToString() => new DateTime(Year, Month, Day).ToString(FORMAT);
 
-        public static implicit operator Date(DateTime dateTime)
-        {
-            return new Date(dateTime);
-        }
+        public static implicit operator Date(DateTime dateTime) => new Date(dateTime);
 
-        public static explicit operator DateTime(Date date)
-        {
-            return new DateTime(date.Year, date.Month, date.Day);
-        }
+        public static explicit operator DateTime(Date date) => new DateTime(date.Year, date.Month, date.Day);
 
-        public bool Equals(Date other)
-        {
-            return Year == other.Year && Month == other.Month && Day == other.Day && DayOfYear == other.DayOfYear;
-        }
+        #region IEquatable Support
 
-        public override bool Equals(object obj)
-        {
-            return obj is Date other && Equals(other);
-        }
+        public bool Equals(Date other) => Year == other.Year && Month == other.Month && Day == other.Day && DayOfYear == other.DayOfYear;
+
+        public override bool Equals(object obj) => obj is Date other && Equals(other);
 
         public override int GetHashCode()
         {
@@ -68,14 +55,10 @@ namespace DSFramework.Timing
             }
         }
 
-        public static bool operator ==(Date date1, Date date2)
-        {
-            return date1.Equals(date2);
-        }
+        public static bool operator ==(Date date1, Date date2) => date1.Equals(date2);
 
-        public static bool operator !=(Date date1, Date date2)
-        {
-            return !(date1 == date2);
-        }
+        public static bool operator !=(Date date1, Date date2) => !(date1 == date2);
+
+        #endregion
     }
 }

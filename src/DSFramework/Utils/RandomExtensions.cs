@@ -15,8 +15,7 @@ namespace DSFramework.Utils
         /// <param name="max">The exclusive maximum bound.  Must be greater than min</param>
         public static long NextLong(this Random random, long min, long max)
         {
-            if (max <= min)
-                throw new ArgumentOutOfRangeException("max", "max must be > min!");
+            if (max <= min) throw new ArgumentOutOfRangeException(nameof(max), message: "max must be > min!");
 
             //Working with ulong so that modulo works correctly with values > long.MaxValue
             var uRange = (ulong)(max - min);
@@ -29,7 +28,7 @@ namespace DSFramework.Utils
             {
                 var buf = new byte[8];
                 random.NextBytes(buf);
-                ulongRand = (ulong)BitConverter.ToInt64(buf, 0);
+                ulongRand = (ulong)BitConverter.ToInt64(buf, startIndex: 0);
             }
             while (ulongRand > ulong.MaxValue - (ulong.MaxValue % uRange + 1) % uRange);
 
@@ -41,19 +40,13 @@ namespace DSFramework.Utils
         /// </summary>
         /// <param name="random">The given random instance</param>
         /// <param name="max">The exclusive maximum bound.  Must be greater than 0</param>
-        public static long NextLong(this Random random, long max)
-        {
-            return random.NextLong(0, max);
-        }
+        public static long NextLong(this Random random, long max) => random.NextLong(0, max);
 
         /// <summary>
         ///     Returns a random long over all possible values of long (except long.MaxValue, similar to
         ///     random.Next())
         /// </summary>
         /// <param name="random">The given random instance</param>
-        public static long NextLong(this Random random)
-        {
-            return random.NextLong(long.MinValue, long.MaxValue);
-        }
+        public static long NextLong(this Random random) => random.NextLong(long.MinValue, long.MaxValue);
     }
 }

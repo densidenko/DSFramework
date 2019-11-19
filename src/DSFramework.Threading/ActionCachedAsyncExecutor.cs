@@ -34,14 +34,11 @@ namespace DSFramework.Threading
         /// </summary>
         /// <param name="action"></param>
         public void TryExecute(Action action)
-        {
-            TryExecute(
-                () =>
-                {
-                    action();
-                    return Task.FromResult(0);
-                });
-        }
+            => TryExecute(() =>
+            {
+                action();
+                return Task.FromResult(0);
+            });
 
         /// <summary>
         ///     Try executing action or save it and execute after executing current
@@ -57,41 +54,41 @@ namespace DSFramework.Threading
                     _savedAction = action;
                     return;
                 }
+
                 _actionExecuting = true;
             }
 
-            _taskFactory.StartNew(
-                async () =>
+            _taskFactory.StartNew(async () =>
+            {
+                do
                 {
-                    do
+                    try
                     {
-                        try
+                        if (_semaphore != null)
                         {
-                            if (_semaphore != null)
-                            {
-                                await _semaphore.WaitAsync();
-                            }
-
-                            await action();
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError(-1, ex, "async executor failed");
-                        }
-                        finally
-                        {
-                            _semaphore?.Release();
+                            await _semaphore.WaitAsync();
                         }
 
-                        lock (_saveActionLocker)
-                        {
-                            _actionExecuting = _savedAction != null;
-                            action = _savedAction;
-                            _savedAction = null;
-                        }
+                        await action();
                     }
-                    while (action != null);
-                });
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(-1, ex, "async executor failed");
+                    }
+                    finally
+                    {
+                        _semaphore?.Release();
+                    }
+
+                    lock (_saveActionLocker)
+                    {
+                        _actionExecuting = _savedAction != null;
+                        action = _savedAction;
+                        _savedAction = null;
+                    }
+                }
+                while (action != null);
+            });
         }
     }
 }

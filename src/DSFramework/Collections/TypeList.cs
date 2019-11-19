@@ -8,8 +8,7 @@ namespace DSFramework.Collections
     ///     A shortcut for <see cref="TypeList{TBaseType}" /> to use object as base type.
     /// </summary>
     public class TypeList : TypeList<object>, ITypeList
-    {
-    }
+    { }
 
     /// <summary>
     ///     Extends <see cref="List{T}" /> to add restriction a specific base type.
@@ -54,13 +53,6 @@ namespace DSFramework.Collections
         }
 
         /// <inheritdoc />
-        public void Add<T>()
-            where T : TBaseType
-        {
-            _typeList.Add(typeof(T));
-        }
-
-        /// <inheritdoc />
         public void Add(Type item)
         {
             CheckType(item);
@@ -68,71 +60,37 @@ namespace DSFramework.Collections
         }
 
         /// <inheritdoc />
-        public void Insert(int index, Type item)
-        {
-            _typeList.Insert(index, item);
-        }
+        public bool Contains(Type item) => _typeList.Contains(item);
 
         /// <inheritdoc />
-        public int IndexOf(Type item)
-        {
-            return _typeList.IndexOf(item);
-        }
+        public bool Remove(Type item) => _typeList.Remove(item);
 
         /// <inheritdoc />
-        public bool Contains<T>()
-            where T : TBaseType
-        {
-            return Contains(typeof(T));
-        }
+        public void Clear() => _typeList.Clear();
 
         /// <inheritdoc />
-        public bool Contains(Type item)
-        {
-            return _typeList.Contains(item);
-        }
+        public void CopyTo(Type[] array, int arrayIndex) => _typeList.CopyTo(array, arrayIndex);
 
         /// <inheritdoc />
-        public void Remove<T>()
-            where T : TBaseType
-        {
-            _typeList.Remove(typeof(T));
-        }
+        public IEnumerator<Type> GetEnumerator() => _typeList.GetEnumerator();
 
         /// <inheritdoc />
-        public bool Remove(Type item)
-        {
-            return _typeList.Remove(item);
-        }
+        public void Insert(int index, Type item) => _typeList.Insert(index, item);
 
         /// <inheritdoc />
-        public void RemoveAt(int index)
-        {
-            _typeList.RemoveAt(index);
-        }
+        public int IndexOf(Type item) => _typeList.IndexOf(item);
 
         /// <inheritdoc />
-        public void Clear()
-        {
-            _typeList.Clear();
-        }
+        public void RemoveAt(int index) => _typeList.RemoveAt(index);
 
         /// <inheritdoc />
-        public void CopyTo(Type[] array, int arrayIndex)
-        {
-            _typeList.CopyTo(array, arrayIndex);
-        }
+        public void Add<T>() where T : TBaseType => _typeList.Add(typeof(T));
 
         /// <inheritdoc />
-        public IEnumerator<Type> GetEnumerator()
-        {
-            return _typeList.GetEnumerator();
-        }
+        public bool Contains<T>() where T : TBaseType => Contains(typeof(T));
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _typeList.GetEnumerator();
-        }
+        /// <inheritdoc />
+        public void Remove<T>() where T : TBaseType => _typeList.Remove(typeof(T));
 
         private static void CheckType(Type item)
         {
@@ -141,5 +99,7 @@ namespace DSFramework.Collections
                 throw new ArgumentException("Given item is not type of " + typeof(TBaseType).AssemblyQualifiedName, nameof(item));
             }
         }
+
+        IEnumerator IEnumerable.GetEnumerator() => _typeList.GetEnumerator();
     }
 }

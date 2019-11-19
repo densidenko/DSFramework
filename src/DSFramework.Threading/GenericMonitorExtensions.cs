@@ -23,14 +23,12 @@ namespace DSFramework.Threading
                 {
                     return;
                 }
+
                 _sync.Exit(_key, _lockTaken);
                 _sync = null;
             }
         }
 
-        public static IDisposable Lock<T>(this GenericMonitor<T> obj, T key)
-        {
-            return new Token<T>(obj, key);
-        }
+        public static IDisposable Lock<T>(this GenericMonitor<T> obj, T key) => new Token<T>(obj, key);
     }
 }

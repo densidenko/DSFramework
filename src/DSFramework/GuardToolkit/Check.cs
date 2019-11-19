@@ -1,10 +1,10 @@
-﻿using DSFramework.Collections;
-using DSFramework.Extensions;
-using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using DSFramework.Collections;
+using DSFramework.Extensions;
+using JetBrains.Annotations;
 
 namespace DSFramework.GuardToolkit
 {
@@ -21,8 +21,7 @@ namespace DSFramework.GuardToolkit
         private const string NOT_NEGATIVE_MESSAGE = "Argument '{0}' cannot be a negative value. Value: '{1}'.";
 
         [ContractAnnotation("value:null => halt")]
-        public static T NotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName)
-            where T : class
+        public static T NotNull<T>(T value, [InvokerParameterName] [NotNull] string parameterName) where T : class
         {
             if (value == null)
             {
@@ -33,8 +32,7 @@ namespace DSFramework.GuardToolkit
         }
 
         [ContractAnnotation("value:null => halt")]
-        public static T? NotNull<T>(T? value, [InvokerParameterName] [NotNull] string parameterName)
-            where T : struct
+        public static T? NotNull<T>(T? value, [InvokerParameterName] [NotNull] string parameterName) where T : struct
         {
             if (!value.HasValue)
             {
@@ -76,7 +74,7 @@ namespace DSFramework.GuardToolkit
 
             return value;
         }
-        
+
         public static void ArgumentNotEmpty(Guid arg, string argName)
         {
             if (arg == Guid.Empty)
@@ -85,8 +83,10 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void ArgumentInRange<T>(T arg, T min, T max, string argName)
-            where T : struct, IComparable<T>
+        public static void ArgumentInRange<T>(T arg,
+                                              T min,
+                                              T max,
+                                              string argName) where T : struct, IComparable<T>
         {
             if (arg.CompareTo(min) < 0 || arg.CompareTo(max) > 0)
             {
@@ -103,8 +103,7 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void ArgumentNotNegative<T>(T arg, string argName, string message = NOT_NEGATIVE_MESSAGE)
-            where T : struct, IComparable<T>
+        public static void ArgumentNotNegative<T>(T arg, string argName, string message = NOT_NEGATIVE_MESSAGE) where T : struct, IComparable<T>
         {
             if (arg.CompareTo(default) < 0)
             {
@@ -112,8 +111,7 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void ArgumentNotZero<T>(T arg, string argName)
-            where T : struct, IComparable<T>
+        public static void ArgumentNotZero<T>(T arg, string argName) where T : struct, IComparable<T>
         {
             if (arg.CompareTo(default) == 0)
             {
@@ -126,9 +124,7 @@ namespace DSFramework.GuardToolkit
         }
 
         public static void InheritsFrom<TBase>(Type type)
-        {
-            InheritsFrom<TBase>(type, INHERITS_FROM_MESSAGE.FormatInvariant(type.FullName, typeof(TBase).FullName));
-        }
+            => InheritsFrom<TBase>(type, INHERITS_FROM_MESSAGE.FormatInvariant(type.FullName, typeof(TBase).FullName));
 
         public static void InheritsFrom<TBase>(Type type, string message)
         {
@@ -137,7 +133,7 @@ namespace DSFramework.GuardToolkit
                 throw new InvalidOperationException(message);
             }
         }
-        
+
         public static void Implements<TInterface>(Type type, string message = IMPLEMENTS_MESSAGE)
         {
             if (!typeof(TInterface).IsAssignableFrom(type))
@@ -147,9 +143,7 @@ namespace DSFramework.GuardToolkit
         }
 
         public static void IsTypeOf<TType>(object instance)
-        {
-            IsTypeOf<TType>(instance, IS_TYPE_OF_MESSAGE.FormatInvariant(instance.GetType().Name, typeof(TType).FullName));
-        }
+            => IsTypeOf<TType>(instance, IS_TYPE_OF_MESSAGE.FormatInvariant(instance.GetType().Name, typeof(TType).FullName));
 
         public static void IsTypeOf<TType>(object instance, string message)
         {
@@ -159,8 +153,7 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void IsEqual<TException>(object compare, object instance, string message = IS_EQUAL_MESSAGE)
-            where TException : Exception
+        public static void IsEqual<TException>(object compare, object instance, string message = IS_EQUAL_MESSAGE) where TException : Exception
         {
             if (!compare.Equals(instance))
             {
@@ -168,8 +161,7 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void ArgumentIsPositive<T>(T arg, string argName, string message = IS_POSITIVE_MESSAGE)
-            where T : struct, IComparable<T>
+        public static void ArgumentIsPositive<T>(T arg, string argName, string message = IS_POSITIVE_MESSAGE) where T : struct, IComparable<T>
         {
             if (arg.CompareTo(default) < 1)
             {
@@ -195,8 +187,7 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void ArgumentIsEnumType<TEnum>(object arg, string argName)
-            where TEnum : struct
+        public static void ArgumentIsEnumType<TEnum>(object arg, string argName) where TEnum : struct
         {
             NotNull(arg, argName);
             if (!Enum.IsDefined(typeof(TEnum), arg))
@@ -209,7 +200,10 @@ namespace DSFramework.GuardToolkit
             }
         }
 
-        public static void PagingArgsValid(int indexArg, long sizeArg, string indexArgName, string sizeArgName)
+        public static void PagingArgsValid(int indexArg,
+                                           long sizeArg,
+                                           string indexArgName,
+                                           string sizeArgName)
         {
             ArgumentNotNegative(indexArg, indexArgName, "PageIndex cannot be below 0");
             if (indexArg > 0)

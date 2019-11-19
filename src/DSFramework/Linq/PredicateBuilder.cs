@@ -16,38 +16,30 @@ namespace DSFramework.Linq
         /// </summary>
         private class RebindParameterVisitor : ExpressionVisitor
         {
-            private readonly Dictionary<ParameterExpression, ParameterExpression> map;
+            private readonly Dictionary<ParameterExpression, ParameterExpression> _map;
 
             public RebindParameterVisitor(Dictionary<ParameterExpression, ParameterExpression> map)
             {
-                this.map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
-            }
-
-            public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
-            {
-                return new RebindParameterVisitor(map).Visit(exp);
+                this._map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
             }
 
             protected override Expression VisitParameter(ParameterExpression p)
             {
-                if (map.TryGetValue(p, out var replacement))
+                if (_map.TryGetValue(p, out var replacement))
                 {
                     p = replacement;
                 }
 
                 return base.VisitParameter(p);
             }
+
+            public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
+                => new RebindParameterVisitor(map).Visit(exp);
         }
 
-        public static Expression<Func<T, bool>> True<T>()
-        {
-            return f => true;
-        }
+        public static Expression<Func<T, bool>> True<T>() => f => true;
 
-        public static Expression<Func<T, bool>> False<T>()
-        {
-            return f => false;
-        }
+        public static Expression<Func<T, bool>> False<T>() => f => false;
 
         /// <summary>
         ///     Combines two given expressions by using the AND semantics.
@@ -57,9 +49,7 @@ namespace DSFramework.Linq
         /// <param name="second">The second part of the expression.</param>
         /// <returns>The combined expression.</returns>
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
-        {
-            return first.Compose(second, Expression.AndAlso);
-        }
+            => first.Compose(second, Expression.AndAlso);
 
         /// <summary>
         ///     Combines two given expressions by using the OR semantics.
@@ -69,9 +59,7 @@ namespace DSFramework.Linq
         /// <param name="second">The second part of the expression.</param>
         /// <returns>The combined expression.</returns>
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> first, Expression<Func<T, bool>> second)
-        {
-            return first.Compose(second, Expression.OrElse);
-        }
+            => first.Compose(second, Expression.OrElse);
 
         private static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second, Func<Expression, Expression, Expression> merge)
         {

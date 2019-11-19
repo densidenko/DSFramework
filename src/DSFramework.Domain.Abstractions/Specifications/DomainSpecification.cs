@@ -7,24 +7,14 @@ namespace DSFramework.Domain.Abstractions.Specifications
     {
         public abstract bool IsSatisfied(TAggregateRoot obj);
 
-        public virtual IEnumerable<TAggregateRoot> Filter(IEnumerable<TAggregateRoot> collection)
-        {
-            return collection.Where(IsSatisfied);
-        }
+        public virtual IEnumerable<TAggregateRoot> Filter(IEnumerable<TAggregateRoot> collection) => collection.Where(IsSatisfied);
 
         public IAndDomainSpecification<TAggregateRoot> And(IDomainSpecification<TAggregateRoot> specification)
-        {
-            return new AndDomainSpecification<TAggregateRoot>(this, specification);
-        }
+            => new AndDomainSpecification<TAggregateRoot>(this, specification);
 
         public IOrDomainSpecification<TAggregateRoot> Or(IDomainSpecification<TAggregateRoot> specification)
-        {
-            return new OrDomainSpecification<TAggregateRoot>(this, specification);
-        }
+            => new OrDomainSpecification<TAggregateRoot>(this, specification);
 
-        public INotDomainSpecification<TAggregateRoot> Not()
-        {
-            return new NotDomainSpecification<TAggregateRoot>(this);
-        }
+        public INotDomainSpecification<TAggregateRoot> Not() => new NotDomainSpecification<TAggregateRoot>(this);
     }
 }

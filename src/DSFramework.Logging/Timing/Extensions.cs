@@ -3,20 +3,20 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
-namespace DSFramework.Extensions.Logging.Timing
+namespace DSFramework.Logging.Timing
 {
     public static class Extensions
     {
-        public static void LogTime(
-            this ILogger logger,
-            Action action,
-            string call,
-            [CallerMemberName] string caller = null)
+        public static void LogTime(this ILogger logger,
+                                   Action action,
+                                   string call,
+                                   [CallerMemberName] string caller = null)
         {
             if (caller != null)
             {
                 call = $"{caller}:{call}";
             }
+
             logger.LogDebug($"{call} started.");
             var stopwatch = Stopwatch.StartNew();
             try
@@ -41,10 +41,7 @@ namespace DSFramework.Extensions.Logging.Timing
             return TimeGuard.Create(logger, caller);
         }
 
-        public static TimeGuard CreateTimeGuard(
-            this ILogger logger,
-            TimeSpan timeSpan,
-            [CallerMemberName] string caller = null)
+        public static TimeGuard CreateTimeGuard(this ILogger logger, TimeSpan timeSpan, [CallerMemberName] string caller = null)
         {
             if (logger == null)
             {

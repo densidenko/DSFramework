@@ -28,7 +28,7 @@ namespace DSFramework.Runtime.Serialization
                     }
                 }
 
-                return Type.GetType(string.Format("{0}, {1}", typeName, assemblyName));
+                return Type.GetType($"{typeName}, {assemblyName}");
             }
         }
 
@@ -52,10 +52,7 @@ namespace DSFramework.Runtime.Serialization
         /// <param name="obj">object to be serialized</param>
         /// <param name="stream">Stream to serialize in</param>
         /// <returns>bytes of object</returns>
-        public static void Serialize(object obj, Stream stream)
-        {
-            CreateBinaryFormatter().Serialize(stream, obj);
-        }
+        public static void Serialize(object obj, Stream stream) => CreateBinaryFormatter().Serialize(stream, obj);
 
         /// <summary>
         ///     Deserializes an object from given byte array.
@@ -75,10 +72,7 @@ namespace DSFramework.Runtime.Serialization
         /// </summary>
         /// <param name="stream">The stream that contains object</param>
         /// <returns>deserialized object</returns>
-        public static object Deserialize(Stream stream)
-        {
-            return CreateBinaryFormatter().Deserialize(stream);
-        }
+        public static object Deserialize(Stream stream) => CreateBinaryFormatter().Deserialize(stream);
 
         /// <summary>
         ///     Deserializes an object from given byte array.
@@ -102,10 +96,7 @@ namespace DSFramework.Runtime.Serialization
         /// </summary>
         /// <param name="stream">The stream that contains object</param>
         /// <returns>deserialized object</returns>
-        public static object DeserializeExtended(Stream stream)
-        {
-            return CreateBinaryFormatter(true).Deserialize(stream);
-        }
+        public static object DeserializeExtended(Stream stream) => CreateBinaryFormatter(true).Deserialize(stream);
 
         private static BinaryFormatter CreateBinaryFormatter(bool extended = false)
         {

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSFramework.Extensions.DependencyInjection\DSFramework.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\DSFramework.Extensions\DSFramework.Extensions.csproj" />
+    <ProjectReference Include="..\DSFramework.Hosting.MultiTenancy\DSFramework.Hosting.MultiTenancy.csproj" />
+    <ProjectReference Include="..\DSFramework\DSFramework.csproj" />
+  </ItemGroup>
+
+</Project>
