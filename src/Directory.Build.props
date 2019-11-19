@@ -5,6 +5,6 @@
         <PackageProjectUrl>https://github.com/densidenko/DSFrameworkCore</PackageProjectUrl>
         <PackageLicenseUrl>https://licenses.nuget.org/Apache-2.0</PackageLicenseUrl>     
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-		<PackageTags>Infrastructure;DSFramework;Asp.Net.Core;MingoDb</PackageTags>		
+		<PackageTags>Infrastructure;DSFramework;Asp.Net.Core;MingoDB</PackageTags>		
     </PropertyGroup>
 </Project>

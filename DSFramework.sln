@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Logging.Serilog.Sink.MongoDB", "src\DSFramework.Logging.Serilog.Sink.MongoDB\DSFramework.Logging.Serilog.Sink.MongoDB.csproj", "{F54BF315-2825-40FD-96E0-21767B6D15D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Security.Authorization", "src\DSFramework.Security.Authorization\DSFramework.Security.Authorization.csproj", "{A3D9DD2F-308E-404D-838A-BB30DB6BA812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Security", "src\DSFramework.Security\DSFramework.Security.csproj", "{A3D9DD2F-308E-404D-838A-BB30DB6BA812}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Hosting.MultiTenancy", "src\DSFramework.Hosting.MultiTenancy\DSFramework.Hosting.MultiTenancy.csproj", "{979253DA-5365-4A00-A095-204979ADB8E2}"
 EndProject
@@ -26,17 +26,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Web.AspNetCore"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Web.Metrics.Prometheus", "src\DSFramework.Web.Metrics.Prometheus\DSFramework.Web.Metrics.Prometheus.csproj", "{189D9C50-C903-4538-B626-2AC06CBCEF15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Data.Contracts", "src\DSFramework.Data.Contracts\DSFramework.Data.Contracts.csproj", "{1773C6B6-3269-4BE3-8877-97F4C61487E0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Threading", "src\DSFramework.Threading\DSFramework.Threading.csproj", "{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Data.MongoDB", "src\DSFramework.Data.MongoDB\DSFramework.Data.MongoDB.csproj", "{7D99C44D-E796-4386-BA13-FC7F0610A78E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Data.MongoDB", "src\DSFramework.Data.MongoDB\DSFramework.Data.MongoDB.csproj", "{7D99C44D-E796-4386-BA13-FC7F0610A78E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Extensions", "src\DSFramework.Extensions\DSFramework.Extensions.csproj", "{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Extensions", "src\DSFramework.Extensions\DSFramework.Extensions.csproj", "{18C3BA63-4D1C-4250-9CD5-DF5B4799A212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Web", "src\DSFramework.Web\DSFramework.Web.csproj", "{6A2AD8A0-C370-4D49-91AF-3029CE471C08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.Web", "src\DSFramework.Web\DSFramework.Web.csproj", "{6A2AD8A0-C370-4D49-91AF-3029CE471C08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSFramework.Security", "src\DSFramework.Security\DSFramework.Security.csproj", "{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSFramework.DataProtection", "src\DSFramework.DataProtection\DSFramework.DataProtection.csproj", "{549FC885-F3D6-4C8E-B93F-B11B6C6A74BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,10 +86,6 @@ Global
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{189D9C50-C903-4538-B626-2AC06CBCEF15}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1773C6B6-3269-4BE3-8877-97F4C61487E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -128,7 +122,6 @@ Global
 		{06448685-8DB7-4AE9-946A-956F1F80307C} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{8AE3EDBE-6528-4D23-969A-30AE84D44FC6} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{189D9C50-C903-4538-B626-2AC06CBCEF15} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
-		{1773C6B6-3269-4BE3-8877-97F4C61487E0} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{F8A20F38-2EBA-4D66-8A67-25B10EB7EB74} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{7D99C44D-E796-4386-BA13-FC7F0610A78E} = {E33462D4-0904-47C7-87F0-478E667C5AD2}
 		{18C3BA63-4D1C-4250-9CD5-DF5B4799A212} = {E33462D4-0904-47C7-87F0-478E667C5AD2}

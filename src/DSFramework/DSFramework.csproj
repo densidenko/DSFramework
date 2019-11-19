@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Data.Contracts\DSFramework.Data.Contracts.csproj" />
     <ProjectReference Include="..\DSFramework.Extensions.DependencyInjection\DSFramework.Extensions.DependencyInjection.csproj" />
     <ProjectReference Include="..\DSFramework.Domain.Abstractions\DSFramework.Domain.Abstractions.csproj" />
   </ItemGroup>
