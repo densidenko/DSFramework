@@ -197,8 +197,7 @@ namespace DSFramework.Timing
         ///     Creates a new <see cref="DateTimeRange" /> object.
         /// </summary>
         public DateTimeRange()
-        {
-        }
+        { }
 
         /// <summary>
         ///     Creates a new <see cref="DateTimeRange" /> object from the given <paramref name="startTime" /> and
@@ -234,10 +233,13 @@ namespace DSFramework.Timing
             EndTime = dateTimeRange.EndTime;
         }
 
-        public bool Contains(DateTime dateTime)
-        {
-            return dateTime > StartTime && dateTime < EndTime;
-        }
+        /// <summary>
+        ///     Returns a <see cref="System.String" /> that represents the current <see cref="DateTimeRange" />.
+        /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents the current <see cref="DateTimeRange" />.</returns>
+        public override string ToString() => string.Format("[{0} - {1}]", StartTime, EndTime);
+
+        public bool Contains(DateTime dateTime) => dateTime > StartTime && dateTime < EndTime;
 
         public Date[] GetDates()
         {
@@ -249,15 +251,6 @@ namespace DSFramework.Timing
             }
 
             return allDates.ToArray();
-        }
-
-        /// <summary>
-        ///     Returns a <see cref="System.String" /> that represents the current <see cref="DateTimeRange" />.
-        /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents the current <see cref="DateTimeRange" />.</returns>
-        public override string ToString()
-        {
-            return string.Format("[{0} - {1}]", StartTime, EndTime);
         }
     }
 }

@@ -23,24 +23,35 @@ namespace DSFramework.Threading
             /// </summary>
             public int WorkingThreads => _workingThreads;
 
-            public int StartWait()
+            public int StartWait() => Interlocked.Increment(ref _waitingThreads);
+
+            public int StartWork() => Interlocked.Increment(ref _workingThreads);
+
+            public int EndWait() => Interlocked.Decrement(ref _waitingThreads);
+
+            public int EndWork() => Interlocked.Decrement(ref _workingThreads);
+        }
+
+        private sealed class MultiToken : IDisposable
+        {
+            private readonly List<Token> _tokens = new List<Token>();
+
+            public MultiToken(GenericMonitor<T> sync, IEnumerable<T> keys)
             {
-                return Interlocked.Increment(ref _waitingThreads);
+                foreach (var key in keys.Distinct().OrderBy(k => k))
+                {
+                    _tokens.Add(new Token(sync, key));
+                }
             }
 
-            public int EndWait()
+            public void Dispose()
             {
-                return Interlocked.Decrement(ref _waitingThreads);
-            }
+                foreach (var token in _tokens)
+                {
+                    token.Dispose();
+                }
 
-            public int StartWork()
-            {
-                return Interlocked.Increment(ref _workingThreads);
-            }
-
-            public int EndWork()
-            {
-                return Interlocked.Decrement(ref _workingThreads);
+                _tokens.Clear();
             }
         }
 
@@ -63,44 +74,17 @@ namespace DSFramework.Threading
                 {
                     return;
                 }
+
                 _sync.Exit(_key, _lockTaken);
                 _sync = null;
             }
         }
 
-        private sealed class MultiToken : IDisposable
-        {
-            private readonly List<Token> _tokens = new List<Token>();
-
-            public MultiToken(GenericMonitor<T> sync, IEnumerable<T> keys)
-            {
-                foreach (var key in keys.Distinct().OrderBy(k => k))
-                {
-                    _tokens.Add(new Token(sync, key));
-                }
-            }
-
-            public void Dispose()
-            {
-                foreach (var token in _tokens)
-                {
-                    token.Dispose();
-                }
-                _tokens.Clear();
-            }
-        }
-
         private readonly Dictionary<T, LockDescriptor> _locks = new Dictionary<T, LockDescriptor>();
 
-        public IDisposable Lock(T key)
-        {
-            return new Token(this, key);
-        }
+        public IDisposable Lock(T key) => new Token(this, key);
 
-        public IDisposable Lock(IEnumerable<T> keys)
-        {
-            return new MultiToken(this, keys);
-        }
+        public IDisposable Lock(IEnumerable<T> keys) => new MultiToken(this, keys);
 
         public bool Enter(T key)
         {

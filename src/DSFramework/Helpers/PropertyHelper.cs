@@ -18,10 +18,7 @@ namespace DSFramework.Helpers
         /// <typeparam name="TEntity">The type of the entity (interface or class).</typeparam>
         /// <param name="expression">The expression returning the entity property, in the form x =&gt; x.Id</param>
         /// <returns>The name of the property as a string</returns>
-        public static string Name<TEntity>(Expression<Func<TEntity, object>> expression)
-        {
-            return GetNestedPropertyName(expression);
-        }
+        public static string Name<TEntity>(Expression<Func<TEntity, object>> expression) => GetNestedPropertyName(expression);
 
         /// <summary>
         ///     Gets the type for the specified entity property or field. Eg Type&lt;string&gt;(x =&gt; x.Length) == typeof(int)
@@ -34,13 +31,11 @@ namespace DSFramework.Helpers
             var memberExpression = GetMemberExpression(expression);
 
             var propertyInfo = memberExpression.Member as PropertyInfo;
-            if (propertyInfo != null)
-                return propertyInfo.PropertyType;
+            if (propertyInfo != null) return propertyInfo.PropertyType;
 
             //not a property, maybe a public field
             var fieldInfo = memberExpression.Member as FieldInfo;
-            if (fieldInfo != null)
-                return fieldInfo.FieldType;
+            if (fieldInfo != null) return fieldInfo.FieldType;
 
             //unknown
             return typeof(object);
@@ -68,8 +63,7 @@ namespace DSFramework.Helpers
             }
 
             //runtime exception if not a member
-            if (memberExpression == null)
-                throw new ArgumentException("Not a property or field", "expression");
+            if (memberExpression == null) throw new ArgumentException("Not a property or field", "expression");
 
             return memberExpression;
         }
@@ -87,8 +81,7 @@ namespace DSFramework.Helpers
                 if (body.NodeType == ExpressionType.Convert)
                 {
                     var mex = (MemberExpression)body.Operand;
-                    if (mex.Expression.NodeType != ExpressionType.MemberAccess)
-                        return mex.Member.Name;
+                    if (mex.Expression.NodeType != ExpressionType.MemberAccess) return mex.Member.Name;
 
                     bodyExpression = mex;
                 }
@@ -96,8 +89,7 @@ namespace DSFramework.Helpers
 
             var memberExpression = bodyExpression as MemberExpression;
             //runtime exception if not a member
-            if (memberExpression == null)
-                throw new ArgumentException("Not a property or field", nameof(expression));
+            if (memberExpression == null) throw new ArgumentException("Not a property or field", nameof(expression));
 
             var memberExpressionOrg = memberExpression;
 
@@ -138,7 +130,8 @@ namespace DSFramework.Helpers
                 case TypeCode.Single:
                 case TypeCode.UInt16:
                 case TypeCode.UInt32:
-                case TypeCode.UInt64: return true;
+                case TypeCode.UInt64:
+                    return true;
                 case TypeCode.Object:
 
                     if (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
@@ -170,8 +163,7 @@ namespace DSFramework.Helpers
             if (value == null)
             {
                 var nullDisplayText = propertyInfo.GetNullDisplayTextAttribute();
-                if (!string.IsNullOrEmpty(nullDisplayText))
-                    return nullDisplayText;
+                if (!string.IsNullOrEmpty(nullDisplayText)) return nullDisplayText;
             }
 
             return value;

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSFramework.Dependecy\DSFramework.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\DSFramework.Extensions.DependencyInjection\DSFramework.Extensions.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>

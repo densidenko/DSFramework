@@ -7,8 +7,7 @@ namespace DSFramework.Collections
     ///     A shortcut for <see cref="ITypeList{TBaseType}" /> to use object as base type.
     /// </summary>
     public interface ITypeList : ITypeList<object>
-    {
-    }
+    { }
 
     /// <summary>
     ///     Extends <see cref="IList{T}" /> to add restriction a specific base type.
@@ -20,22 +19,19 @@ namespace DSFramework.Collections
         ///     Adds a type to list.
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
-        void Add<T>()
-            where T : TBaseType;
+        void Add<T>() where T : TBaseType;
 
         /// <summary>
         ///     Checks if a type exists in the list.
         /// </summary>
         /// <typeparam name="T">Type</typeparam>
         /// <returns></returns>
-        bool Contains<T>()
-            where T : TBaseType;
+        bool Contains<T>() where T : TBaseType;
 
         /// <summary>
         ///     Removes a type from list
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        void Remove<T>()
-            where T : TBaseType;
+        void Remove<T>() where T : TBaseType;
     }
 }

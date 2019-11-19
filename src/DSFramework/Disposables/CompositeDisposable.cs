@@ -8,12 +8,12 @@ namespace DSFramework.Disposables
     {
         private readonly IReadOnlyList<IDisposable> _disposables;
 
+        public bool IsEmpty => !_disposables.Any();
+
         public CompositeDisposable(IEnumerable<IDisposable> disposables)
         {
             _disposables = disposables?.ToList();
         }
-
-        public bool IsEmpty => !_disposables.Any();
 
         public void Dispose()
         {

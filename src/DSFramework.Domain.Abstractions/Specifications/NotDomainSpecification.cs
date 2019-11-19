@@ -9,9 +9,6 @@
             Source = source;
         }
 
-        public override bool IsSatisfied(TAggregateRoot obj)
-        {
-            return !Source.IsSatisfied(obj);
-        }
+        public override bool IsSatisfied(TAggregateRoot obj) => !Source.IsSatisfied(obj);
     }
 }

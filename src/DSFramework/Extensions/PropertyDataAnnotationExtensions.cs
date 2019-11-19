@@ -20,12 +20,10 @@ namespace DSFramework.Extensions
             var info = value.GetType().GetField(value.ToString());
 
             var displayName = info.GetCustomAttributes(true).OfType<DisplayNameAttribute>().FirstOrDefault();
-            if (displayName != null)
-                return displayName.DisplayName;
+            if (displayName != null) return displayName.DisplayName;
 
             var description = info.GetCustomAttributes(true).OfType<DescriptionAttribute>().FirstOrDefault();
-            if (description != null)
-                return description.Description;
+            if (description != null) return description.Description;
 
             return value.ToString();
         }

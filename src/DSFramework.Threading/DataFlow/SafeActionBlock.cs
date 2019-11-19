@@ -38,29 +38,17 @@ namespace DSFramework.Threading.DataFlow
             _actionBlock = new ActionBlock<TInput>(ActionAsync, dataFlowBlockOptions);
         }
 
-        public DataflowMessageStatus OfferMessage(
-            DataflowMessageHeader messageHeader,
-            TInput messageValue,
-            ISourceBlock<TInput> source,
-            bool consumeToAccept)
-        {
-            return ((ITargetBlock<TInput>)_actionBlock).OfferMessage(messageHeader, messageValue, source, consumeToAccept);
-        }
+        public override string ToString() => _actionBlock.ToString();
 
-        public void Complete()
-        {
-            _actionBlock.Complete();
-        }
+        public void Complete() => _actionBlock.Complete();
 
-        public void Fault(Exception exception)
-        {
-            ((IDataflowBlock)_actionBlock).Fault(exception);
-        }
+        public void Fault(Exception exception) => ((IDataflowBlock)_actionBlock).Fault(exception);
 
-        public override string ToString()
-        {
-            return _actionBlock.ToString();
-        }
+        public DataflowMessageStatus OfferMessage(DataflowMessageHeader messageHeader,
+                                                  TInput messageValue,
+                                                  ISourceBlock<TInput> source,
+                                                  bool consumeToAccept)
+            => ((ITargetBlock<TInput>)_actionBlock).OfferMessage(messageHeader, messageValue, source, consumeToAccept);
 
         private async Task ActionAsync(TInput input)
         {

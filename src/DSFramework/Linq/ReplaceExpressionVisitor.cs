@@ -13,9 +13,6 @@ namespace DSFramework.Linq
             _newValue = newValue;
         }
 
-        public override Expression Visit(Expression node)
-        {
-            return node == _oldValue ? _newValue : base.Visit(node);
-        }
+        public override Expression Visit(Expression node) => node == _oldValue ? _newValue : base.Visit(node);
     }
 }
