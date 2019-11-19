@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSFramework.Security.Authorization\DSFramework.Security.Authorization.csproj" />
-    <ProjectReference Include="..\DSFramework.Data.Contracts\DSFramework.Data.Contracts.csproj" />
     <ProjectReference Include="..\DSFramework.Logging.Serilog\DSFramework.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\DSFramework.Security\DSFramework.Security.csproj" />
+    <ProjectReference Include="..\DSFramework.DataProtection\DSFramework.DataProtection.csproj" />
     <ProjectReference Include="..\DSFramework\DSFramework.csproj" />
   </ItemGroup>
 

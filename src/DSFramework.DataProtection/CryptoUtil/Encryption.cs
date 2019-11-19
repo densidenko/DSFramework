@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DSFramework.Security.Cryptography
+namespace DSFramework.DataProtection.CryptoUtil
 {
     public static class Encryption
     {
