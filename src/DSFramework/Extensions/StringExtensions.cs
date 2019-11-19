@@ -188,7 +188,7 @@ namespace DSFramework.Extensions
                 return string.Empty;
             }
 
-            if (CollectionExtensions.IsNullOrEmpty(postFixes))
+            if (postFixes.IsNullOrEmpty())
             {
                 return str;
             }
@@ -223,7 +223,7 @@ namespace DSFramework.Extensions
                 return string.Empty;
             }
 
-            if (CollectionExtensions.IsNullOrEmpty(preFixes))
+            if (preFixes.IsNullOrEmpty())
             {
                 return str;
             }

@@ -20,7 +20,7 @@ namespace DSFramework.Linq
 
             public RebindParameterVisitor(Dictionary<ParameterExpression, ParameterExpression> map)
             {
-                this._map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
+                _map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
             }
 
             protected override Expression VisitParameter(ParameterExpression p)
